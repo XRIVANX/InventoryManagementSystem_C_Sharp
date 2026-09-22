@@ -36,6 +36,8 @@
             this.cboCategoryFilter = new System.Windows.Forms.ComboBox();
             this.dgvProducts = new System.Windows.Forms.DataGridView();
             this.pnlEntry = new System.Windows.Forms.Panel();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
             this.chkActive = new System.Windows.Forms.CheckBox();
@@ -61,8 +63,6 @@
             this.txtSKU = new System.Windows.Forms.TextBox();
             this.SKU = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
             this.ep = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -82,17 +82,22 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.btnCancel);
             this.splitContainer1.Panel1.Controls.Add(this.txtSearch);
+            this.splitContainer1.Panel1.Controls.Add(this.btnDelete);
+            this.splitContainer1.Panel1.Controls.Add(this.btnSave);
             this.splitContainer1.Panel1.Controls.Add(this.lblCount);
+            this.splitContainer1.Panel1.Controls.Add(this.btnNew);
             this.splitContainer1.Panel1.Controls.Add(this.cboStatusFilter);
             this.splitContainer1.Panel1.Controls.Add(this.cboCategoryFilter);
+            this.splitContainer1.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel1_Paint);
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.dgvProducts);
             this.splitContainer1.Panel2.Controls.Add(this.pnlEntry);
-            this.splitContainer1.Size = new System.Drawing.Size(1087, 501);
-            this.splitContainer1.SplitterDistance = 82;
+            this.splitContainer1.Size = new System.Drawing.Size(1147, 620);
+            this.splitContainer1.SplitterDistance = 101;
             this.splitContainer1.TabIndex = 0;
             // 
             // txtSearch
@@ -140,15 +145,12 @@
             this.dgvProducts.RowHeadersWidth = 51;
             this.dgvProducts.RowTemplate.Height = 24;
             this.dgvProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProducts.Size = new System.Drawing.Size(1087, 195);
+            this.dgvProducts.Size = new System.Drawing.Size(1147, 301);
             this.dgvProducts.TabIndex = 0;
+            this.dgvProducts.SelectionChanged += new System.EventHandler(this.dgvProducts_SelectionChanged);
             // 
             // pnlEntry
             // 
-            this.pnlEntry.Controls.Add(this.btnCancel);
-            this.pnlEntry.Controls.Add(this.btnDelete);
-            this.pnlEntry.Controls.Add(this.btnSave);
-            this.pnlEntry.Controls.Add(this.btnNew);
             this.pnlEntry.Controls.Add(this.chkActive);
             this.pnlEntry.Controls.Add(this.chkBatchTracked);
             this.pnlEntry.Controls.Add(this.label7);
@@ -172,28 +174,50 @@
             this.pnlEntry.Controls.Add(this.txtSKU);
             this.pnlEntry.Controls.Add(this.SKU);
             this.pnlEntry.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlEntry.Location = new System.Drawing.Point(0, 195);
+            this.pnlEntry.Location = new System.Drawing.Point(0, 301);
             this.pnlEntry.Name = "pnlEntry";
-            this.pnlEntry.Size = new System.Drawing.Size(1087, 220);
+            this.pnlEntry.Size = new System.Drawing.Size(1147, 214);
             this.pnlEntry.TabIndex = 0;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(782, 27);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(63, 31);
+            this.btnCancel.TabIndex = 26;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(716, 27);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(60, 31);
+            this.btnDelete.TabIndex = 25;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(891, 179);
+            this.btnSave.Location = new System.Drawing.Point(649, 27);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(60, 31);
             this.btnSave.TabIndex = 24;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnNew
             // 
-            this.btnNew.Location = new System.Drawing.Point(824, 179);
+            this.btnNew.Location = new System.Drawing.Point(582, 27);
             this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(61, 29);
+            this.btnNew.Size = new System.Drawing.Size(61, 31);
             this.btnNew.TabIndex = 23;
             this.btnNew.Text = "New";
             this.btnNew.UseVisualStyleBackColor = true;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // chkActive
             // 
@@ -402,24 +426,6 @@
             this.textBox1.Size = new System.Drawing.Size(100, 22);
             this.textBox1.TabIndex = 7;
             // 
-            // btnDelete
-            // 
-            this.btnDelete.Location = new System.Drawing.Point(958, 179);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(60, 29);
-            this.btnDelete.TabIndex = 25;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Location = new System.Drawing.Point(1024, 179);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(60, 29);
-            this.btnCancel.TabIndex = 26;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            // 
             // ep
             // 
             this.ep.ContainerControl = this;
@@ -428,7 +434,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1087, 501);
+            this.ClientSize = new System.Drawing.Size(1147, 620);
             this.Controls.Add(this.splitContainer1);
             this.Name = "FrmProducts";
             this.Text = "Products";
