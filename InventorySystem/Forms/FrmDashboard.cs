@@ -1,9 +1,11 @@
-﻿using System;
+﻿using InventorySystem.Data;
+using InventorySystem.Forms.Auth;
+using InventorySystem.Forms.Master;
+using InventorySystem.Helpers;
+using System;
 using System.Data;
 using System.Windows.Forms;
-using InventorySystem.Data;
-using InventorySystem.Helpers;
-using InventorySystem.Forms.Auth;
+
 
 namespace InventorySystem.Forms
 {
@@ -88,7 +90,7 @@ namespace InventorySystem.Forms
         private void mnuExit_Click(object sender, EventArgs e) => Application.Exit();
 
         // ---- Masterfile menu (stubs for now) ----
-        private void mnuProducts_Click(object sender, EventArgs e) => NotYetBuilt("Products");
+        private void mnuProducts_Click(object sender, EventArgs e) => OpenChild<FrmProducts>();
         private void mnuCategories_Click(object sender, EventArgs e) => NotYetBuilt("Categories");
         private void mnuSuppliers_Click(object sender, EventArgs e) => NotYetBuilt("Suppliers");
         private void mnuWarehouses_Click(object sender, EventArgs e) => NotYetBuilt("Warehouses");
