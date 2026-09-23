@@ -111,7 +111,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(9, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1251, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1251, 30);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -354,7 +354,7 @@
             this.pnlKpi.Controls.Add(this.panel2);
             this.pnlKpi.Controls.Add(this.panel1);
             this.pnlKpi.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlKpi.Location = new System.Drawing.Point(0, 28);
+            this.pnlKpi.Location = new System.Drawing.Point(0, 30);
             this.pnlKpi.Name = "pnlKpi";
             this.pnlKpi.Size = new System.Drawing.Size(1251, 106);
             this.pnlKpi.TabIndex = 4;

@@ -91,7 +91,7 @@ namespace InventorySystem.Forms
 
         // ---- Masterfile menu (stubs for now) ----
         private void mnuProducts_Click(object sender, EventArgs e) => OpenChild<FrmProducts>();
-        private void mnuCategories_Click(object sender, EventArgs e) => NotYetBuilt("Categories");
+        private void mnuCategories_Click(object sender, EventArgs e) => OpenChild<FrmCategories>();
         private void mnuSuppliers_Click(object sender, EventArgs e) => NotYetBuilt("Suppliers");
         private void mnuWarehouses_Click(object sender, EventArgs e) => NotYetBuilt("Warehouses");
         private void mnuUsers_Click(object sender, EventArgs e) => NotYetBuilt("Users");

@@ -3,7 +3,7 @@
     <Platform Name="Any CPU" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="InventorySystem/InventorySystem.csproj">
+  <Project Path="InventorySystem/InventorySystem.csproj" Id="d9cb8f81-f869-4982-a078-55ce7edad5b0">
     <Platform Solution="*|x86" Project="x86" />
   </Project>
 </Solution>
