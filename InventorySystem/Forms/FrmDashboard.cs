@@ -93,7 +93,7 @@ namespace InventorySystem.Forms
         private void mnuProducts_Click(object sender, EventArgs e) => OpenChild<FrmProducts>();
         private void mnuCategories_Click(object sender, EventArgs e) => OpenChild<FrmCategories>();
         private void mnuSuppliers_Click(object sender, EventArgs e) => OpenChild<FrmSuppliers>();
-        private void mnuWarehouses_Click(object sender, EventArgs e) => NotYetBuilt("Warehouses");
+        private void mnuWarehouses_Click(object sender, EventArgs e) => OpenChild<FrmWarehouses>();
         private void mnuUsers_Click(object sender, EventArgs e) => NotYetBuilt("Users");
 
         // ---- Transactions menu (stubs for now) ----

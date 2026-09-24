@@ -101,17 +101,25 @@
     <Compile Include="Forms\Master\FrmSuppliers.Designer.cs">
       <DependentUpon>FrmSuppliers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Master\FrmWarehouses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Master\FrmWarehouses.Designer.cs">
+      <DependentUpon>FrmWarehouses.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\ErrorHandler.cs" />
     <Compile Include="Helpers\Validator.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Supplier.cs" />
+    <Compile Include="Models\Warehouse.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AuthService.cs" />
     <Compile Include="Services\CategoryService.cs" />
     <Compile Include="Services\ProductService.cs" />
     <Compile Include="Services\SupplierService.cs" />
+    <Compile Include="Services\WarehouseService.cs" />
     <EmbeddedResource Include="Forms\Auth\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -126,6 +134,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Master\FrmSuppliers.resx">
       <DependentUpon>FrmSuppliers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Master\FrmWarehouses.resx">
+      <DependentUpon>FrmWarehouses.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
