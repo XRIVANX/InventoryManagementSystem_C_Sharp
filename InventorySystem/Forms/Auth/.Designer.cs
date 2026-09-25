@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogin));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtUsername = new System.Windows.Forms.TextBox();
@@ -38,52 +39,58 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.lblStatus = new System.Windows.Forms.Label();
             this.ep = new System.Windows.Forms.ErrorProvider(this.components);
+            this.LgnCardPanel = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ep)).BeginInit();
+            this.LgnCardPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(316, 203);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(11, 155);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(124, 29);
+            this.label1.Size = new System.Drawing.Size(99, 28);
             this.label1.TabIndex = 0;
             this.label1.Text = "Username";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(316, 282);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(11, 212);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(120, 29);
+            this.label2.Size = new System.Drawing.Size(93, 28);
             this.label2.TabIndex = 1;
             this.label2.Text = "Password";
             // 
             // txtUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(475, 203);
+            this.txtUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtUsername.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUsername.Location = new System.Drawing.Point(122, 149);
             this.txtUsername.Multiline = true;
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(195, 34);
+            this.txtUsername.Size = new System.Drawing.Size(205, 34);
             this.txtUsername.TabIndex = 2;
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(475, 282);
+            this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPassword.Location = new System.Drawing.Point(122, 206);
             this.txtPassword.Multiline = true;
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(195, 34);
+            this.txtPassword.PasswordChar = '♥';
+            this.txtPassword.Size = new System.Drawing.Size(205, 34);
             this.txtPassword.TabIndex = 3;
             // 
             // chkShow
             // 
             this.chkShow.AutoSize = true;
-            this.chkShow.Location = new System.Drawing.Point(676, 296);
+            this.chkShow.Location = new System.Drawing.Point(122, 246);
             this.chkShow.Name = "chkShow";
-            this.chkShow.Size = new System.Drawing.Size(125, 20);
+            this.chkShow.Size = new System.Drawing.Size(148, 27);
             this.chkShow.TabIndex = 4;
             this.chkShow.Text = "Show Password";
             this.chkShow.UseVisualStyleBackColor = true;
@@ -91,29 +98,47 @@
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(475, 359);
+            this.btnLogin.BackColor = System.Drawing.Color.Transparent;
+            this.btnLogin.FlatAppearance.BorderSize = 0;
+            this.btnLogin.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(201)))), ((int)(((byte)(103)))));
+            this.btnLogin.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(201)))), ((int)(((byte)(103)))));
+            this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogin.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogin.ForeColor = System.Drawing.Color.Black;
+            this.btnLogin.Location = new System.Drawing.Point(3, 324);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(82, 29);
+            this.btnLogin.Size = new System.Drawing.Size(354, 42);
             this.btnLogin.TabIndex = 5;
             this.btnLogin.Text = "Login";
-            this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            this.btnLogin.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
+            this.btnLogin.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(588, 359);
+            this.btnExit.BackColor = System.Drawing.Color.Transparent;
+            this.btnExit.FlatAppearance.BorderSize = 0;
+            this.btnExit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(201)))), ((int)(((byte)(103)))));
+            this.btnExit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(100)))), ((int)(((byte)(45)))));
+            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExit.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.ForeColor = System.Drawing.Color.Black;
+            this.btnExit.Location = new System.Drawing.Point(3, 372);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(82, 29);
+            this.btnExit.Size = new System.Drawing.Size(354, 42);
             this.btnExit.TabIndex = 6;
             this.btnExit.Text = "Exit";
-            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.UseVisualStyleBackColor = false;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            this.btnExit.MouseEnter += new System.EventHandler(this.Button_MouseEnter);
+            this.btnExit.MouseLeave += new System.EventHandler(this.Button_MouseLeave);
             // 
             // lblStatus
             // 
             this.lblStatus.AutoSize = true;
             this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStatus.Location = new System.Drawing.Point(316, 120);
+            this.lblStatus.Location = new System.Drawing.Point(37, 16);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(0, 25);
             this.lblStatus.TabIndex = 7;
@@ -122,28 +147,56 @@
             // 
             this.ep.ContainerControl = this;
             // 
+            // LgnCardPanel
+            // 
+            this.LgnCardPanel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.LgnCardPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.LgnCardPanel.Controls.Add(this.label3);
+            this.LgnCardPanel.Controls.Add(this.lblStatus);
+            this.LgnCardPanel.Controls.Add(this.txtUsername);
+            this.LgnCardPanel.Controls.Add(this.label1);
+            this.LgnCardPanel.Controls.Add(this.btnExit);
+            this.LgnCardPanel.Controls.Add(this.label2);
+            this.LgnCardPanel.Controls.Add(this.btnLogin);
+            this.LgnCardPanel.Controls.Add(this.txtPassword);
+            this.LgnCardPanel.Controls.Add(this.chkShow);
+            this.LgnCardPanel.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LgnCardPanel.Location = new System.Drawing.Point(363, 66);
+            this.LgnCardPanel.Name = "LgnCardPanel";
+            this.LgnCardPanel.Size = new System.Drawing.Size(360, 438);
+            this.LgnCardPanel.TabIndex = 8;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(47, 54);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(268, 38);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "INVENTORY LOGIN";
+            // 
             // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1049, 560);
-            this.Controls.Add(this.lblStatus);
-            this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.btnLogin);
-            this.Controls.Add(this.chkShow);
-            this.Controls.Add(this.txtPassword);
-            this.Controls.Add(this.txtUsername);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.LgnCardPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "FrmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login — Inventory Management System";
             this.Load += new System.EventHandler(this.FrmLogin_Load);
+            this.MouseEnter += new System.EventHandler(this.btnLogin_Click);
+            this.MouseLeave += new System.EventHandler(this.btnLogin_Click);
+            this.Resize += new System.EventHandler(this.FrmLogin_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.ep)).EndInit();
+            this.LgnCardPanel.ResumeLayout(false);
+            this.LgnCardPanel.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -158,5 +211,7 @@
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.ErrorProvider ep;
+        private System.Windows.Forms.Panel LgnCardPanel;
+        private System.Windows.Forms.Label label3;
     }
 }

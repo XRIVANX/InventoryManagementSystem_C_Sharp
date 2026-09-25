@@ -101,6 +101,12 @@
     <Compile Include="Forms\Master\FrmSuppliers.Designer.cs">
       <DependentUpon>FrmSuppliers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Master\FrmUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Master\FrmUsers.Designer.cs">
+      <DependentUpon>FrmUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Master\FrmWarehouses.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +118,7 @@
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Supplier.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Models\Warehouse.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -119,6 +126,7 @@
     <Compile Include="Services\CategoryService.cs" />
     <Compile Include="Services\ProductService.cs" />
     <Compile Include="Services\SupplierService.cs" />
+    <Compile Include="Services\UserService.cs" />
     <Compile Include="Services\WarehouseService.cs" />
     <EmbeddedResource Include="Forms\Auth\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
@@ -135,6 +143,9 @@
     <EmbeddedResource Include="Forms\Master\FrmSuppliers.resx">
       <DependentUpon>FrmSuppliers.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Master\FrmUsers.resx">
+      <DependentUpon>FrmUsers.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Master\FrmWarehouses.resx">
       <DependentUpon>FrmWarehouses.cs</DependentUpon>
     </EmbeddedResource>
@@ -146,6 +157,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -164,6 +176,9 @@
     <Folder Include="Forms\Reports\" />
     <Folder Include="Forms\Trans\" />
     <Folder Include="Reports\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gemini_Generated_Image_hq9x4whq9x4whq9x.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
