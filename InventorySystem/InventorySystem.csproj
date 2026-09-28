@@ -113,6 +113,24 @@
     <Compile Include="Forms\Master\FrmWarehouses.Designer.cs">
       <DependentUpon>FrmWarehouses.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Trans\FrmBatchEntry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Trans\FrmBatchEntry.Designer.cs">
+      <DependentUpon>FrmBatchEntry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Trans\FrmStockIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Trans\FrmStockIn.Designer.cs">
+      <DependentUpon>FrmStockIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Trans\FrmStockOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Trans\FrmStockOut.Designer.cs">
+      <DependentUpon>FrmStockOut.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\ErrorHandler.cs" />
     <Compile Include="Helpers\Validator.cs" />
     <Compile Include="Models\Category.cs" />
@@ -149,6 +167,15 @@
     <EmbeddedResource Include="Forms\Master\FrmWarehouses.resx">
       <DependentUpon>FrmWarehouses.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Trans\FrmBatchEntry.resx">
+      <DependentUpon>FrmBatchEntry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Trans\FrmStockIn.resx">
+      <DependentUpon>FrmStockIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Trans\FrmStockOut.resx">
+      <DependentUpon>FrmStockOut.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -174,7 +201,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Forms\Reports\" />
-    <Folder Include="Forms\Trans\" />
     <Folder Include="Reports\" />
   </ItemGroup>
   <ItemGroup>

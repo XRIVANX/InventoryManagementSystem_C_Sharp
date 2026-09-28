@@ -1,6 +1,7 @@
 ﻿using InventorySystem.Data;
 using InventorySystem.Forms.Auth;
 using InventorySystem.Forms.Master;
+using InventorySystem.Forms.Trans;
 using InventorySystem.Helpers;
 using System;
 using System.Data;
@@ -97,8 +98,8 @@ namespace InventorySystem.Forms
         private void mnuUsers_Click(object sender, EventArgs e) => OpenChild<FrmUsers>();
 
         // ---- Transactions menu (stubs for now) ----
-        private void mnuStockIn_Click(object sender, EventArgs e) => NotYetBuilt("Stock In");
-        private void mnuStockOut_Click(object sender, EventArgs e) => NotYetBuilt("Stock Out");
+        private void mnuStockIn_Click(object sender, EventArgs e) => OpenChild<FrmStockIn>();
+        private void mnuStockOut_Click(object sender, EventArgs e) => OpenChild<FrmStockOut>();
         private void mnuTransfer_Click(object sender, EventArgs e) => NotYetBuilt("Stock Transfer");
         private void mnuAdjustment_Click(object sender, EventArgs e) => NotYetBuilt("Stock Adjustment");
         private void mnuPhysicalCount_Click(object sender, EventArgs e) => NotYetBuilt("Physical Count");

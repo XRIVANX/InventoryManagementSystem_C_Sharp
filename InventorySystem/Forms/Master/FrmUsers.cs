@@ -217,5 +217,10 @@ namespace InventorySystem.Forms.Master
             txtUsername.ReadOnly = false;
             ep.Clear();
         }
+
+        private void dgvUsers_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
