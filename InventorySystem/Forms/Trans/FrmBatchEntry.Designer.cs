@@ -44,7 +44,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(346, 66);
+            this.label1.Location = new System.Drawing.Point(363, 115);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 16);
             this.label1.TabIndex = 0;
@@ -52,7 +52,7 @@
             // 
             // txtBatchNo
             // 
-            this.txtBatchNo.Location = new System.Drawing.Point(414, 60);
+            this.txtBatchNo.Location = new System.Drawing.Point(431, 109);
             this.txtBatchNo.Name = "txtBatchNo";
             this.txtBatchNo.Size = new System.Drawing.Size(100, 22);
             this.txtBatchNo.TabIndex = 1;
@@ -60,7 +60,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(346, 107);
+            this.label2.Location = new System.Drawing.Point(363, 156);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(112, 16);
             this.label2.TabIndex = 2;
@@ -69,7 +69,7 @@
             // dtpManufacture
             // 
             this.dtpManufacture.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpManufacture.Location = new System.Drawing.Point(464, 102);
+            this.dtpManufacture.Location = new System.Drawing.Point(481, 151);
             this.dtpManufacture.Name = "dtpManufacture";
             this.dtpManufacture.Size = new System.Drawing.Size(251, 22);
             this.dtpManufacture.TabIndex = 4;
@@ -77,7 +77,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(346, 147);
+            this.label3.Location = new System.Drawing.Point(363, 196);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(76, 16);
             this.label3.TabIndex = 5;
@@ -85,28 +85,30 @@
             // 
             // dtpExpiry
             // 
-            this.dtpExpiry.Location = new System.Drawing.Point(428, 142);
+            this.dtpExpiry.Location = new System.Drawing.Point(445, 191);
             this.dtpExpiry.Name = "dtpExpiry";
             this.dtpExpiry.Size = new System.Drawing.Size(200, 22);
             this.dtpExpiry.TabIndex = 6;
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(358, 205);
+            this.btnOK.Location = new System.Drawing.Point(375, 254);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 28);
             this.btnOK.TabIndex = 7;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnCancelDlg
             // 
-            this.btnCancelDlg.Location = new System.Drawing.Point(439, 205);
+            this.btnCancelDlg.Location = new System.Drawing.Point(456, 254);
             this.btnCancelDlg.Name = "btnCancelDlg";
             this.btnCancelDlg.Size = new System.Drawing.Size(75, 28);
             this.btnCancelDlg.TabIndex = 8;
-            this.btnCancelDlg.Text = "button2";
+            this.btnCancelDlg.Text = "Cancel";
             this.btnCancelDlg.UseVisualStyleBackColor = true;
+            this.btnCancelDlg.Click += new System.EventHandler(this.btnCancelDlg_Click);
             // 
             // ep
             // 
@@ -129,6 +131,7 @@
             this.MaximizeBox = false;
             this.Name = "FrmBatchEntry";
             this.Text = "New Batch";
+            this.Load += new System.EventHandler(this.FrmBatchEntry_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ep)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

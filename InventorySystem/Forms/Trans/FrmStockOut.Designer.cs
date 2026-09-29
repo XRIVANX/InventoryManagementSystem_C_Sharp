@@ -136,7 +136,7 @@
             // lblStatusBadge
             // 
             this.lblStatusBadge.AutoSize = true;
-            this.lblStatusBadge.Location = new System.Drawing.Point(764, 19);
+            this.lblStatusBadge.Location = new System.Drawing.Point(956, 19);
             this.lblStatusBadge.Name = "lblStatusBadge";
             this.lblStatusBadge.Size = new System.Drawing.Size(39, 16);
             this.lblStatusBadge.TabIndex = 9;
@@ -145,7 +145,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(713, 19);
+            this.label5.Location = new System.Drawing.Point(905, 19);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(44, 16);
             this.label5.TabIndex = 8;
@@ -240,7 +240,7 @@
             // 
             // btnAddLine
             // 
-            this.btnAddLine.Location = new System.Drawing.Point(422, 40);
+            this.btnAddLine.Location = new System.Drawing.Point(476, 33);
             this.btnAddLine.Name = "btnAddLine";
             this.btnAddLine.Size = new System.Drawing.Size(84, 29);
             this.btnAddLine.TabIndex = 9;
@@ -259,7 +259,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(223, 46);
+            this.label9.Location = new System.Drawing.Point(268, 46);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(60, 16);
             this.label9.TabIndex = 7;
@@ -267,16 +267,16 @@
             // 
             // txtUnitCost
             // 
-            this.txtUnitCost.Location = new System.Drawing.Point(284, 43);
+            this.txtUnitCost.Location = new System.Drawing.Point(334, 46);
             this.txtUnitCost.Name = "txtUnitCost";
             this.txtUnitCost.ReadOnly = true;
-            this.txtUnitCost.Size = new System.Drawing.Size(100, 22);
+            this.txtUnitCost.Size = new System.Drawing.Size(121, 22);
             this.txtUnitCost.TabIndex = 6;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(223, 14);
+            this.label8.Location = new System.Drawing.Point(273, 11);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(55, 16);
             this.label8.TabIndex = 5;
@@ -284,9 +284,9 @@
             // 
             // txtQty
             // 
-            this.txtQty.Location = new System.Drawing.Point(284, 8);
+            this.txtQty.Location = new System.Drawing.Point(334, 5);
             this.txtQty.Name = "txtQty";
-            this.txtQty.Size = new System.Drawing.Size(100, 22);
+            this.txtQty.Size = new System.Drawing.Size(119, 22);
             this.txtQty.TabIndex = 4;
             // 
             // cboBatch
@@ -295,7 +295,7 @@
             this.cboBatch.FormattingEnabled = true;
             this.cboBatch.Location = new System.Drawing.Point(69, 43);
             this.cboBatch.Name = "cboBatch";
-            this.cboBatch.Size = new System.Drawing.Size(121, 24);
+            this.cboBatch.Size = new System.Drawing.Size(148, 24);
             this.cboBatch.TabIndex = 3;
             this.cboBatch.SelectedIndexChanged += new System.EventHandler(this.cboBatch_SelectedIndexChanged);
             // 
@@ -323,7 +323,7 @@
             this.cboProduct.FormattingEnabled = true;
             this.cboProduct.Location = new System.Drawing.Point(69, 6);
             this.cboProduct.Name = "cboProduct";
-            this.cboProduct.Size = new System.Drawing.Size(121, 24);
+            this.cboProduct.Size = new System.Drawing.Size(148, 24);
             this.cboProduct.TabIndex = 0;
             this.cboProduct.SelectedIndexChanged += new System.EventHandler(this.cboProduct_SelectedIndexChanged);
             // 

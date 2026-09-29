@@ -88,6 +88,8 @@ namespace InventorySystem.Forms.Trans
                 "SELECT IsBatchTracked FROM Products WHERE ProductID=@id",
                 CommandType.Text, DbHelper.P("@id", pid)));
 
+           
+
             cboBatch.Enabled = batched;
             btnNewBatch.Enabled = batched;
             if (batched) LoadBatches(pid); else cboBatch.DataSource = null;

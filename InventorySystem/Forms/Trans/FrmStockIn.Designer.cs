@@ -172,7 +172,7 @@
             // 
             this.txtReferenceNo.Location = new System.Drawing.Point(110, 68);
             this.txtReferenceNo.Name = "txtReferenceNo";
-            this.txtReferenceNo.Size = new System.Drawing.Size(100, 22);
+            this.txtReferenceNo.Size = new System.Drawing.Size(121, 22);
             this.txtReferenceNo.TabIndex = 5;
             // 
             // label3
