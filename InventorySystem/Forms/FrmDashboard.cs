@@ -100,7 +100,7 @@ namespace InventorySystem.Forms
         // ---- Transactions menu (stubs for now) ----
         private void mnuStockIn_Click(object sender, EventArgs e) => OpenChild<FrmStockIn>();
         private void mnuStockOut_Click(object sender, EventArgs e) => OpenChild<FrmStockOut>();
-        private void mnuTransfer_Click(object sender, EventArgs e) => NotYetBuilt("Stock Transfer");
+        private void mnuTransfer_Click(object sender, EventArgs e) => OpenChild<FrmTransfer>();
         private void mnuAdjustment_Click(object sender, EventArgs e) => NotYetBuilt("Stock Adjustment");
         private void mnuPhysicalCount_Click(object sender, EventArgs e) => NotYetBuilt("Physical Count");
 

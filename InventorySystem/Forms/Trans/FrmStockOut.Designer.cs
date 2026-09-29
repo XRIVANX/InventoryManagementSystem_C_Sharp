@@ -251,10 +251,11 @@
             // lblAvailable
             // 
             this.lblAvailable.AutoSize = true;
-            this.lblAvailable.Location = new System.Drawing.Point(438, 9);
+            this.lblAvailable.Location = new System.Drawing.Point(486, 9);
             this.lblAvailable.Name = "lblAvailable";
-            this.lblAvailable.Size = new System.Drawing.Size(0, 16);
+            this.lblAvailable.Size = new System.Drawing.Size(74, 16);
             this.lblAvailable.TabIndex = 8;
+            this.lblAvailable.Text = "Available: -";
             // 
             // label9
             // 
@@ -331,14 +332,15 @@
             // 
             this.dgvLines.AllowUserToAddRows = false;
             this.dgvLines.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvLines.Location = new System.Drawing.Point(0, 229);
+            this.dgvLines.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvLines.Location = new System.Drawing.Point(0, 233);
             this.dgvLines.MultiSelect = false;
             this.dgvLines.Name = "dgvLines";
             this.dgvLines.ReadOnly = true;
             this.dgvLines.RowHeadersWidth = 51;
             this.dgvLines.RowTemplate.Height = 24;
             this.dgvLines.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvLines.Size = new System.Drawing.Size(1054, 296);
+            this.dgvLines.Size = new System.Drawing.Size(1054, 397);
             this.dgvLines.TabIndex = 2;
             // 
             // pnlFooter

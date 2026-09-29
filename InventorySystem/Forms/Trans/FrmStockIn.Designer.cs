@@ -45,6 +45,8 @@
             this.lblTxnNo = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlLineEntry = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.txtUnitCost = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -67,8 +69,6 @@
             this.lblTotalQty = new System.Windows.Forms.Label();
             this.lblLineCount = new System.Windows.Forms.Label();
             this.ep = new System.Windows.Forms.ErrorProvider(this.components);
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.pnlHeader.SuspendLayout();
             this.pnlLineEntry.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLines)).BeginInit();
@@ -234,6 +234,24 @@
             this.pnlLineEntry.Size = new System.Drawing.Size(1120, 75);
             this.pnlLineEntry.TabIndex = 1;
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(17, 46);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(41, 16);
+            this.label13.TabIndex = 28;
+            this.label13.Text = "Batch";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(15, 18);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(53, 16);
+            this.label12.TabIndex = 27;
+            this.label12.Text = "Product";
+            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -309,14 +327,15 @@
             // 
             this.dgvLines.AllowUserToAddRows = false;
             this.dgvLines.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvLines.Location = new System.Drawing.Point(0, 223);
+            this.dgvLines.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvLines.Location = new System.Drawing.Point(0, 217);
             this.dgvLines.MultiSelect = false;
             this.dgvLines.Name = "dgvLines";
             this.dgvLines.ReadOnly = true;
             this.dgvLines.RowHeadersWidth = 51;
             this.dgvLines.RowTemplate.Height = 24;
             this.dgvLines.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvLines.Size = new System.Drawing.Size(1120, 242);
+            this.dgvLines.Size = new System.Drawing.Size(1120, 365);
             this.dgvLines.TabIndex = 2;
             // 
             // pnlFooter
@@ -445,24 +464,6 @@
             // ep
             // 
             this.ep.ContainerControl = this;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(15, 18);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(53, 16);
-            this.label12.TabIndex = 27;
-            this.label12.Text = "Product";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(17, 46);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(41, 16);
-            this.label13.TabIndex = 28;
-            this.label13.Text = "Batch";
             // 
             // FrmStockIn
             // 
