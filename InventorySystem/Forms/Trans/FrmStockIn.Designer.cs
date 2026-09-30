@@ -156,7 +156,7 @@
             this.cboWarehouse.FormattingEnabled = true;
             this.cboWarehouse.Location = new System.Drawing.Point(110, 106);
             this.cboWarehouse.Name = "cboWarehouse";
-            this.cboWarehouse.Size = new System.Drawing.Size(121, 24);
+            this.cboWarehouse.Size = new System.Drawing.Size(150, 24);
             this.cboWarehouse.TabIndex = 7;
             // 
             // Ware
@@ -172,7 +172,7 @@
             // 
             this.txtReferenceNo.Location = new System.Drawing.Point(110, 68);
             this.txtReferenceNo.Name = "txtReferenceNo";
-            this.txtReferenceNo.Size = new System.Drawing.Size(121, 22);
+            this.txtReferenceNo.Size = new System.Drawing.Size(150, 22);
             this.txtReferenceNo.TabIndex = 5;
             // 
             // label3
@@ -359,9 +359,9 @@
             // 
             // btnNew
             // 
-            this.btnNew.Location = new System.Drawing.Point(659, 8);
+            this.btnNew.Location = new System.Drawing.Point(185, 8);
             this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(113, 28);
+            this.btnNew.Size = new System.Drawing.Size(75, 38);
             this.btnNew.TabIndex = 19;
             this.btnNew.Text = "New";
             this.btnNew.UseVisualStyleBackColor = true;
@@ -369,9 +369,9 @@
             // 
             // btnPrint
             // 
-            this.btnPrint.Location = new System.Drawing.Point(540, 8);
+            this.btnPrint.Location = new System.Drawing.Point(350, 8);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(113, 28);
+            this.btnPrint.Size = new System.Drawing.Size(81, 38);
             this.btnPrint.TabIndex = 18;
             this.btnPrint.Text = "Print";
             this.btnPrint.UseVisualStyleBackColor = true;
@@ -379,9 +379,9 @@
             // 
             // btnPost
             // 
-            this.btnPost.Location = new System.Drawing.Point(421, 11);
+            this.btnPost.Location = new System.Drawing.Point(266, 8);
             this.btnPost.Name = "btnPost";
-            this.btnPost.Size = new System.Drawing.Size(113, 28);
+            this.btnPost.Size = new System.Drawing.Size(78, 38);
             this.btnPost.TabIndex = 17;
             this.btnPost.Text = "Post";
             this.btnPost.UseVisualStyleBackColor = true;
@@ -389,9 +389,9 @@
             // 
             // btnSaveDraft
             // 
-            this.btnSaveDraft.Location = new System.Drawing.Point(302, 8);
+            this.btnSaveDraft.Location = new System.Drawing.Point(318, 52);
             this.btnSaveDraft.Name = "btnSaveDraft";
-            this.btnSaveDraft.Size = new System.Drawing.Size(113, 28);
+            this.btnSaveDraft.Size = new System.Drawing.Size(113, 36);
             this.btnSaveDraft.TabIndex = 16;
             this.btnSaveDraft.Text = "SaveDraft";
             this.btnSaveDraft.UseVisualStyleBackColor = true;
@@ -399,9 +399,9 @@
             // 
             // btnRemoveLine
             // 
-            this.btnRemoveLine.Location = new System.Drawing.Point(183, 8);
+            this.btnRemoveLine.Location = new System.Drawing.Point(185, 52);
             this.btnRemoveLine.Name = "btnRemoveLine";
-            this.btnRemoveLine.Size = new System.Drawing.Size(113, 28);
+            this.btnRemoveLine.Size = new System.Drawing.Size(113, 36);
             this.btnRemoveLine.TabIndex = 15;
             this.btnRemoveLine.Text = "Remove Line";
             this.btnRemoveLine.UseVisualStyleBackColor = true;

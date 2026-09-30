@@ -268,7 +268,8 @@
             // 
             // txtUnitCost
             // 
-            this.txtUnitCost.Location = new System.Drawing.Point(334, 46);
+            this.txtUnitCost.BackColor = System.Drawing.SystemColors.Window;
+            this.txtUnitCost.Location = new System.Drawing.Point(334, 40);
             this.txtUnitCost.Name = "txtUnitCost";
             this.txtUnitCost.ReadOnly = true;
             this.txtUnitCost.Size = new System.Drawing.Size(121, 22);
@@ -296,7 +297,7 @@
             this.cboBatch.FormattingEnabled = true;
             this.cboBatch.Location = new System.Drawing.Point(69, 43);
             this.cboBatch.Name = "cboBatch";
-            this.cboBatch.Size = new System.Drawing.Size(148, 24);
+            this.cboBatch.Size = new System.Drawing.Size(172, 24);
             this.cboBatch.TabIndex = 3;
             this.cboBatch.SelectedIndexChanged += new System.EventHandler(this.cboBatch_SelectedIndexChanged);
             // 
@@ -324,7 +325,7 @@
             this.cboProduct.FormattingEnabled = true;
             this.cboProduct.Location = new System.Drawing.Point(69, 6);
             this.cboProduct.Name = "cboProduct";
-            this.cboProduct.Size = new System.Drawing.Size(148, 24);
+            this.cboProduct.Size = new System.Drawing.Size(172, 24);
             this.cboProduct.TabIndex = 0;
             this.cboProduct.SelectedIndexChanged += new System.EventHandler(this.cboProduct_SelectedIndexChanged);
             // 

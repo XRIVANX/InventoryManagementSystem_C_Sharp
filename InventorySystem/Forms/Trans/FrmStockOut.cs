@@ -401,12 +401,13 @@ namespace InventorySystem.Forms.Trans
         private void UpdateButtons()
         {
             bool editable = _status != "POSTED";
+
             pnlHeader.Enabled = editable;
             pnlLineEntry.Enabled = editable;
             btnAddLine.Enabled = editable;
             btnRemoveLine.Enabled = editable;
             btnSaveDraft.Enabled = editable;
-            btnNew.Enabled = editable && _txnId > 0;
+            btnNew.Enabled = _txnId > 0 || _status == "POSTED";
             btnPost.Enabled = _status == "DRAFT";
             lblStatusBadge.Text = _status;
         }
