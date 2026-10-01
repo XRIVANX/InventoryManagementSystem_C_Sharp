@@ -61,7 +61,7 @@ namespace InventorySystem.Forms.Inquiry
             {
                 int warehouseId = cboWarehouse.SelectedValue is int w ? w : 0;
                 int productId = cboProduct.SelectedValue is int p ? p : 0;
-                bool lowStockOnly = pnlFilters.Checked;
+                bool lowStockOnly = chkLowStock.Checked;
 
                 string query = @"
                     SELECT 
@@ -139,7 +139,7 @@ namespace InventorySystem.Forms.Inquiry
         {
             cboWarehouse.SelectedIndex = 0;
             cboProduct.SelectedIndex = 0;
-            pnlFilters.Checked = false;
+            chkLowStock.Checked = false;
             SearchStock();
         }
     }

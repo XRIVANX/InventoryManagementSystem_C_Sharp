@@ -89,21 +89,23 @@
             // 
             // btnFilter
             // 
-            this.btnFilter.Location = new System.Drawing.Point(261, 8);
+            this.btnFilter.Location = new System.Drawing.Point(261, 12);
             this.btnFilter.Name = "btnFilter";
             this.btnFilter.Size = new System.Drawing.Size(128, 36);
             this.btnFilter.TabIndex = 4;
             this.btnFilter.Text = "Search / Refresh";
             this.btnFilter.UseVisualStyleBackColor = true;
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(261, 50);
+            this.btnReset.Location = new System.Drawing.Point(261, 51);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(128, 33);
             this.btnReset.TabIndex = 5;
             this.btnReset.Text = "Reset Filters";
             this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // cboProduct
             // 
@@ -116,7 +118,7 @@
             // chkLowStock
             // 
             this.chkLowStock.AutoSize = true;
-            this.chkLowStock.Location = new System.Drawing.Point(95, 77);
+            this.chkLowStock.Location = new System.Drawing.Point(96, 72);
             this.chkLowStock.Name = "chkLowStock";
             this.chkLowStock.Size = new System.Drawing.Size(120, 20);
             this.chkLowStock.TabIndex = 8;

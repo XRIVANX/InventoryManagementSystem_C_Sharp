@@ -2,6 +2,7 @@
 using InventorySystem.Forms.Auth;
 using InventorySystem.Forms.Master;
 using InventorySystem.Forms.Trans;
+using InventorySystem.Forms.Inquiry;
 using InventorySystem.Helpers;
 using System;
 using System.Data;
@@ -105,7 +106,7 @@ namespace InventorySystem.Forms
         private void mnuPhysicalCount_Click(object sender, EventArgs e) => OpenChild<FrmPhysicalCount>();
 
         // ---- Inquiry menu (stubs for now) ----
-        private void mnuStockOnHand_Click(object sender, EventArgs e) => NotYetBuilt("Stock On Hand");
+        private void mnuStockOnHand_Click(object sender, EventArgs e) => OpenChild<FrmStockInquiry>();
         private void mnuLowStockInquiry_Click(object sender, EventArgs e) => NotYetBuilt("Low Stock");
         private void mnuExpiringItems_Click(object sender, EventArgs e) => NotYetBuilt("Expiring Items");
         private void mnuTransactionHistory_Click(object sender, EventArgs e) => NotYetBuilt("Transaction History");
