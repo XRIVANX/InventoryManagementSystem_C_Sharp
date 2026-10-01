@@ -1,13 +1,12 @@
 ﻿using InventorySystem.Data;
 using InventorySystem.Forms.Auth;
+using InventorySystem.Forms.Inquiry;
 using InventorySystem.Forms.Master;
 using InventorySystem.Forms.Trans;
-using InventorySystem.Forms.Inquiry;
 using InventorySystem.Helpers;
 using System;
 using System.Data;
 using System.Windows.Forms;
-
 
 namespace InventorySystem.Forms
 {
@@ -63,6 +62,29 @@ namespace InventorySystem.Forms
             child.Show();
         }
 
+        // ---- helper to open/switch FrmStockInquiry with filter flag ----
+        private void OpenInquiryForm(bool lowStockOnly)
+        {
+            foreach (Form f in MdiChildren)
+            {
+                if (f is FrmStockInquiry existing)
+                {
+                    existing.ApplyLowStockFilter(lowStockOnly);
+                    existing.Activate();
+                    existing.WindowState = FormWindowState.Maximized;
+                    return;
+                }
+            }
+
+            var child = new FrmStockInquiry(lowStockOnly)
+            {
+                MdiParent = this,
+                WindowState = FormWindowState.Maximized
+            };
+            child.FormClosed += (s, e) => LoadKpi();
+            child.Show();
+        }
+
         private void NotYetBuilt(string formName)
             => MessageBox.Show($"{formName} hasn't been built yet.", "Coming soon",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -91,23 +113,23 @@ namespace InventorySystem.Forms
 
         private void mnuExit_Click(object sender, EventArgs e) => Application.Exit();
 
-        // ---- Masterfile menu (stubs for now) ----
+        // ---- Masterfile menu ----
         private void mnuProducts_Click(object sender, EventArgs e) => OpenChild<FrmProducts>();
         private void mnuCategories_Click(object sender, EventArgs e) => OpenChild<FrmCategories>();
         private void mnuSuppliers_Click(object sender, EventArgs e) => OpenChild<FrmSuppliers>();
         private void mnuWarehouses_Click(object sender, EventArgs e) => OpenChild<FrmWarehouses>();
         private void mnuUsers_Click(object sender, EventArgs e) => OpenChild<FrmUsers>();
 
-        // ---- Transactions menu (stubs for now) ----
+        // ---- Transactions menu ----
         private void mnuStockIn_Click(object sender, EventArgs e) => OpenChild<FrmStockIn>();
         private void mnuStockOut_Click(object sender, EventArgs e) => OpenChild<FrmStockOut>();
         private void mnuTransfer_Click(object sender, EventArgs e) => OpenChild<FrmTransfer>();
         private void mnuAdjustment_Click(object sender, EventArgs e) => OpenChild<FrmAdjustment>();
         private void mnuPhysicalCount_Click(object sender, EventArgs e) => OpenChild<FrmPhysicalCount>();
 
-        // ---- Inquiry menu (stubs for now) ----
-        private void mnuStockOnHand_Click(object sender, EventArgs e) => OpenChild<FrmStockInquiry>();
-        private void mnuLowStockInquiry_Click(object sender, EventArgs e) => NotYetBuilt("Low Stock");
+        // ---- Inquiry menu ----
+        private void mnuStockOnHand_Click(object sender, EventArgs e) => OpenInquiryForm(false);
+        private void mnuLowStockInquiry_Click(object sender, EventArgs e) => OpenInquiryForm(true);
         private void mnuExpiringItems_Click(object sender, EventArgs e) => NotYetBuilt("Expiring Items");
         private void mnuTransactionHistory_Click(object sender, EventArgs e) => NotYetBuilt("Transaction History");
 

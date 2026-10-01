@@ -8,14 +8,31 @@ namespace InventorySystem.Forms.Inquiry
 {
     public partial class FrmStockInquiry : Form
     {
-        public FrmStockInquiry()
+        private bool _showLowStockOnlyOnLoad = false;
+
+        // Default constructor
+        public FrmStockInquiry() : this(false)
+        {
+        }
+
+        // Overloaded constructor to accept filter flag from Dashboard
+        public FrmStockInquiry(bool showLowStockOnly)
         {
             InitializeComponent();
+            _showLowStockOnlyOnLoad = showLowStockOnly;
         }
 
         private void FrmStockInquiry_Load(object sender, EventArgs e)
         {
             LoadFilterCombos();
+            chkLowStock.Checked = _showLowStockOnlyOnLoad;
+            SearchStock();
+        }
+
+        // Public method to dynamically switch filters when form is already open
+        public void ApplyLowStockFilter(bool lowStockOnly)
+        {
+            chkLowStock.Checked = lowStockOnly;
             SearchStock();
         }
 
