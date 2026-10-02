@@ -131,7 +131,7 @@ namespace InventorySystem.Forms
         private void mnuStockOnHand_Click(object sender, EventArgs e) => OpenInquiryForm(false);
         private void mnuLowStockInquiry_Click(object sender, EventArgs e) => OpenInquiryForm(true);
         private void mnuExpiringItems_Click(object sender, EventArgs e) => NotYetBuilt("Expiring Items");
-        private void mnuTransactionHistory_Click(object sender, EventArgs e) => NotYetBuilt("Transaction History");
+        private void mnuTransactionHistory_Click(object sender, EventArgs e) => OpenChild<FrmMovementInquiry>();
 
         // ---- Reports menu (stubs for now) ----
         private void mnuRptValuation_Click(object sender, EventArgs e) => NotYetBuilt("Inventory Valuation Report");

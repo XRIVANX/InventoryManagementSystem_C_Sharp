@@ -83,6 +83,12 @@
     <Compile Include="Forms\FrmDashboard.Designer.cs">
       <DependentUpon>FrmDashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Inquiry\FrmMovementInquiry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Inquiry\FrmMovementInquiry.Designer.cs">
+      <DependentUpon>FrmMovementInquiry.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Inquiry\FrmStockInquiry.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -175,6 +181,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmDashboard.resx">
       <DependentUpon>FrmDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Inquiry\FrmMovementInquiry.resx">
+      <DependentUpon>FrmMovementInquiry.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Inquiry\FrmStockInquiry.resx">
       <DependentUpon>FrmStockInquiry.cs</DependentUpon>
