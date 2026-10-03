@@ -1,0 +1,32 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema id="InventoryReports" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="InventoryReports" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="InventoryValuation">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Warehouse" type="xs:string" minOccurs="0" />
+              <xs:element name="SKU" type="xs:string" minOccurs="0" />
+              <xs:element name="Product" type="xs:string" minOccurs="0" />
+              <xs:element name="Batch" type="xs:string" minOccurs="0" />
+              <xs:element name="UOM" type="xs:string" minOccurs="0" />
+              <xs:element name="On_x0020_Hand" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Average_x0020_Cost" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Stock_x0020_Value" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ReportContext">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Title" type="xs:string" minOccurs="0" />
+              <xs:element name="Filters" type="xs:string" minOccurs="0" />
+              <xs:element name="GeneratedAt" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -11,12 +11,14 @@ namespace InventorySystem.Forms.Trans
     public partial class FrmStockIn : Form
     {
         private DataTable _lines;
+        private readonly DraftChanges _draftChanges = new DraftChanges();
         private int _txnId = 0;
         private string _status = "NEW";
 
         public FrmStockIn()
         {
             InitializeComponent();
+            _draftChanges.Watch(pnlHeader);
             InventorySystem.Helpers.ModernTheme.Apply(this);
         }
 
@@ -38,6 +40,7 @@ namespace InventorySystem.Forms.Trans
             _lines.Columns.Add("Quantity", typeof(decimal));
             _lines.Columns.Add("UnitCost", typeof(decimal));
             _lines.Columns.Add("LineTotal", typeof(decimal), "Quantity * UnitCost");
+            _draftChanges.Watch(_lines);
             dgvLines.DataSource = _lines;
         }
 
@@ -287,6 +290,7 @@ namespace InventorySystem.Forms.Trans
                     }
                 });
 
+                _draftChanges.MarkSaved();
                 _status = "DRAFT";
                 UpdateButtons();
                 MessageBox.Show("Draft saved as " + lblTxnNo.Text +
@@ -299,6 +303,7 @@ namespace InventorySystem.Forms.Trans
         private void btnPost_Click(object sender, EventArgs e)
         {
             if (_txnId == 0) { MessageBox.Show("Save the draft first."); return; }
+            if (_draftChanges.IsDirty) { MessageBox.Show("Save Draft before posting your changes.","Unsaved draft",MessageBoxButtons.OK,MessageBoxIcon.Warning); return; }
             if (MessageBox.Show(
                 "Posting will update stock levels and this document can no longer be edited.\n\nContinue?",
                 "Confirm Post", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes) return;
@@ -321,8 +326,7 @@ namespace InventorySystem.Forms.Trans
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Reporting comes in a later part of the build.", "Coming soon",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            InventorySystem.Forms.Reports.TransactionReportWindow.Show(this,_txnId);
         }
 
         private void UpdateButtons()
@@ -337,3 +341,4 @@ namespace InventorySystem.Forms.Trans
         }
     }
 }
+

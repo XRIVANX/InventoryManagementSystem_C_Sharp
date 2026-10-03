@@ -15,6 +15,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -25,6 +26,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -169,6 +171,7 @@
     </Compile>
     <Compile Include="Helpers\ErrorHandler.cs" />
     <Compile Include="Helpers\Validator.cs" />
+    <Compile Include="Helpers\DraftChanges.cs" />
     <Compile Include="Helpers\ModernTheme.cs" />
     <Compile Include="Forms\FrmDashboard.Modern.cs">
       <DependentUpon>FrmDashboard.cs</DependentUpon>
@@ -186,9 +189,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AuthService.cs" />
+    <Compile Include="Forms\Auth\FrmChangePassword.cs" />
+    <Compile Include="Forms\Reports\TransactionReportWindow.cs" />
     <Compile Include="Services\CategoryService.cs" />
     <Compile Include="Services\ProductService.cs" />
     <Compile Include="Services\ReportService.cs" />
+    <Compile Include="Forms\Reports\CrystalReportWindow.cs" />
     <Compile Include="Forms\Reports\FrmInventoryReport.cs"><SubType>Form</SubType></Compile>
     <Compile Include="Forms\FrmAbout.cs"><SubType>Form</SubType></Compile>
     <Compile Include="Services\SupplierService.cs" />
@@ -272,5 +278,34 @@
   <ItemGroup>
     <None Include="Resources\Gemini_Generated_Image_hq9x4whq9x4whq9x.jpg" />
   </ItemGroup>
+  <PropertyGroup>
+    <EnableCrystalReports Condition="'$(EnableCrystalReports)' == ''">true</EnableCrystalReports>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(EnableCrystalReports)' == 'true'">
+    <DefineConstants>$(DefineConstants);CRYSTAL_REPORTS</DefineConstants>
+    <!-- Installed SAP runtime is 64-bit; apply after configuration-specific properties. -->
+    <PlatformTarget>x64</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(EnableCrystalReports)' == 'true'">
+    <Reference Include="CrystalDecisions.CrystalReports.Engine">
+      <HintPath Condition="'$(CrystalAssemblyDirectory)' != ''">$(CrystalAssemblyDirectory)\CrystalDecisions.CrystalReports.Engine.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.Shared">
+      <HintPath Condition="'$(CrystalAssemblyDirectory)' != ''">$(CrystalAssemblyDirectory)\CrystalDecisions.Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="CrystalDecisions.Windows.Forms">
+      <HintPath Condition="'$(CrystalAssemblyDirectory)' != ''">$(CrystalAssemblyDirectory)\CrystalDecisions.Windows.Forms.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Reports\*.rpt"><CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory></Content>
+    <Content Include="Reports\*.xsd"><CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory></Content>
+    <None Include="Reports\CrystalReports-Setup.md" />
+    <None Include="Database\Migrations\001_ValidatePhysicalCount.sql" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
+
+
+

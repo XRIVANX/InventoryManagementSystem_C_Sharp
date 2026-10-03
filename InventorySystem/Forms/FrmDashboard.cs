@@ -87,12 +87,8 @@ namespace InventorySystem.Forms
             child.Show();
         }
 
-        private void NotYetBuilt(string formName)
-            => MessageBox.Show($"{formName} hasn't been built yet.", "Coming soon",
-                                MessageBoxButtons.OK, MessageBoxIcon.Information);
-
         // ---- File menu ----
-        private void mnuChangePassword_Click(object sender, EventArgs e) => NotYetBuilt("Change Password");
+        private void mnuChangePassword_Click(object sender, EventArgs e) { using(var form=new FrmChangePassword()) form.ShowDialog(this); }
 
         private void mnuLogout_Click(object sender, EventArgs e)
         {

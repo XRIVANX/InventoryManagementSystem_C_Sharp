@@ -113,8 +113,8 @@ namespace InventorySystem.Forms.Master
 
         private void SetMode(bool editing)
         {
-            pnlEntry.Enabled = editing || _currentId == 0;
-            btnSave.Enabled = editing;
+            pnlEntry.Enabled = editing || _currentId > 0;
+            btnSave.Enabled = editing || _currentId > 0;
             btnDelete.Enabled = !editing && _currentId > 0;
         }
 

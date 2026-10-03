@@ -22,7 +22,7 @@ namespace InventorySystem.Forms
             AddGuide(guide,"01  Set up your catalog","Maintain products, categories, suppliers, and warehouses before recording stock.");
             AddGuide(guide,"02  Record stock movements","Use Stock In, Stock Out, Transfers, Adjustments, and Physical Counts.\nSave a draft to prepare a transaction; post it to update stock balances.");
             AddGuide(guide,"03  Monitor your inventory","Use the overview and inquiry screens to check on-hand stock, low stock, expiry, and history.");
-            AddGuide(guide,"04  Generate and share reports","Choose Reports, set your filters, and generate the results.\nExport CSV or open print preview. Stock cards and movements include posted transactions only.");
+            AddGuide(guide,"04  Generate and share reports","Choose Reports, set your filters, and generate the results.\nExport CSV or open Crystal preview to print and export with SAP. Stock cards and movements include posted transactions only.");
             var notes=ModernTheme.Label("Valuation uses current average product cost. Low stock compares aggregated stock to the reorder level.\nStock card opening balances are reconstructed from current stock and posted movements.",9,ModernTheme.Muted);notes.Margin=new Padding(0,12,0,12);guide.Controls.Add(notes);
             layout.Controls.Add(guide,0,1);
             var close=new Button { Text="Close",Width=105,Height=34,Anchor=AnchorStyles.Right };ModernTheme.Button(close);close.Click+=(s,e)=>Close();layout.Controls.Add(close,0,2);
@@ -35,3 +35,4 @@ namespace InventorySystem.Forms
         }
     }
 }
+

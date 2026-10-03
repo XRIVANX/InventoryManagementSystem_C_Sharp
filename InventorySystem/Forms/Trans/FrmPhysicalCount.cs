@@ -114,7 +114,7 @@ namespace InventorySystem.Forms.Trans
             if (dgvCount.Columns.Count == 0) return;
 
             foreach (DataGridViewColumn c in dgvCount.Columns) c.ReadOnly = true;
-            dgvCount.Columns["CountedQty"].ReadOnly = false;
+            dgvCount.Columns["CountedQty"].ReadOnly = _status == "POSTED";
             dgvCount.Columns["CountLineID"].Visible = false;
             dgvCount.Columns["CountedQty"].DefaultCellStyle.BackColor = System.Drawing.Color.LightYellow;
             dgvCount.Columns["SKU"].HeaderText = "SKU";
@@ -161,7 +161,7 @@ namespace InventorySystem.Forms.Trans
         private void btnSaveCounts_Click(object sender, EventArgs e)
         {
             if (_countId == 0) return;
-            dgvCount.EndEdit();
+            if(!dgvCount.EndEdit()) return;
 
             try
             {
@@ -195,6 +195,14 @@ namespace InventorySystem.Forms.Trans
                 return;
             }
             if (_countId == 0) return;
+            if(!dgvCount.EndEdit()) return;
+            BindingContext[dgvCount.DataSource].EndCurrentEdit();
+            var table=dgvCount.DataSource as DataTable;
+            if(table!=null && table.GetChanges()!=null)
+            {
+                MessageBox.Show("Save Counts before posting your changes.","Unsaved counts",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                return;
+            }
 
             foreach (DataGridViewRow r in dgvCount.Rows)
             {

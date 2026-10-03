@@ -1,4 +1,4 @@
-﻿using InventorySystem.Data;
+using InventorySystem.Data;
 using System;
 using System.Data;
 using System.Security.Cryptography;
@@ -95,6 +95,24 @@ namespace InventorySystem.Services
                 DbHelper.P("@e", email),
                 DbHelper.P("@r", roleId));
         }
+
+        public static AuthResult ChangePassword(string currentPassword,string newPassword)
+        {
+            if(Session.UserID<=0) return new AuthResult { Message="Sign in before changing your password." };
+            if(string.IsNullOrEmpty(newPassword) || newPassword.Length<6)
+                return new AuthResult { Message="Password must be at least 6 characters." };
+            if(string.IsNullOrEmpty(currentPassword)) return new AuthResult { Message="Enter your current password." };
+            var rows=DbHelper.GetData("SELECT PasswordHash,PasswordSalt FROM Users WHERE UserID=@id AND IsActive=1",CommandType.Text,DbHelper.P("@id",Session.UserID));
+            if(rows.Rows.Count==0) return new AuthResult { Message="Your account is unavailable." };
+            string oldHash=rows.Rows[0]["PasswordHash"].ToString(),oldSalt=rows.Rows[0]["PasswordSalt"].ToString();
+            if(!FixedTimeEquals(oldHash,HashPassword(currentPassword,oldSalt)))
+                return new AuthResult { Message="Current password is incorrect." };
+            string salt=CreateSalt();
+            int changed=DbHelper.Execute("UPDATE Users SET PasswordHash=@hash,PasswordSalt=@salt WHERE UserID=@id AND IsActive=1 AND PasswordHash=@oldHash AND PasswordSalt=@oldSalt",CommandType.Text,
+                DbHelper.P("@hash",HashPassword(newPassword,salt)),DbHelper.P("@salt",salt),DbHelper.P("@id",Session.UserID),DbHelper.P("@oldHash",oldHash),DbHelper.P("@oldSalt",oldSalt));
+            return new AuthResult { Success=changed==1, Message=changed==1 ? "Your password has been updated." : "Your account changed. Sign in again and retry." };
+        }
+
 
         public static void EnsureDefaultAdmin()
         {

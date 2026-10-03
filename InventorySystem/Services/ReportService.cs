@@ -11,6 +11,20 @@ namespace InventorySystem.Services
         public static DataTable Warehouses() => DbHelper.GetData("SELECT WarehouseID, WarehouseName FROM Warehouses ORDER BY WarehouseName");
         public static DataTable Products() => DbHelper.GetData("SELECT ProductID, SKU + ' - ' + ProductName AS Display FROM Products ORDER BY ProductName");
 
+        public static DataTable TransactionLines(int transactionId)
+        {
+            return DbHelper.GetData(@"SELECT t.TransactionDate AS [Date],t.TransactionNo AS [Document],t.TransactionType AS [Type],
+                       p.SKU,p.ProductName AS [Product],ISNULL(fw.WarehouseName,'-') AS [From Warehouse],
+                       ISNULL(tw.WarehouseName,'-') AS [To Warehouse],tl.Quantity AS [Quantity],
+                       tl.UnitCost AS [Unit Cost],tl.Quantity*tl.UnitCost AS [Total Cost]
+                FROM StockTransaction t JOIN StockTransactionLine tl ON tl.TransactionID=t.TransactionID
+                JOIN Products p ON p.ProductID=tl.ProductID
+                LEFT JOIN Warehouses fw ON fw.WarehouseID=tl.FromWarehouseID
+                LEFT JOIN Warehouses tw ON tw.WarehouseID=tl.ToWarehouseID
+                WHERE t.TransactionID=@id AND t.Status='POSTED' ORDER BY p.ProductName",CommandType.Text,DbHelper.P("@id",transactionId));
+        }
+
+
         public static DataTable Generate(InventoryReport report, int warehouse, int product, DateTime from, DateTime to)
         {
             if ((report == InventoryReport.StockCard || report == InventoryReport.Movement) && from.Date > to.Date)
@@ -92,3 +106,4 @@ namespace InventorySystem.Services
         }
     }
 }
+

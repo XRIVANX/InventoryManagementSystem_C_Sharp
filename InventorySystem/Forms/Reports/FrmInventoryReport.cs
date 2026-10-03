@@ -25,6 +25,7 @@ namespace InventorySystem.Forms.Reports
         private readonly Label empty = new Label { Dock=DockStyle.Fill,Text="Your report starts here.\n\nChoose filters above, then select Generate report.",TextAlign=ContentAlignment.MiddleCenter,Font=ModernTheme.Font(12),ForeColor=ModernTheme.Muted,BackColor=Color.White };
         private readonly Button export = new Button { Text = "Export CSV", Width = 116, Height = 36, Enabled = false };
         private readonly Button print = new Button { Text = "Print preview", Width = 122, Height = 36, Enabled = false };
+        private readonly Button crystal = new Button { Text = "Crystal preview", Width = 136, Height = 36, Enabled = false };
         private DataTable result;
         private string generatedFilters;
         private int printRow;
@@ -51,8 +52,8 @@ namespace InventorySystem.Forms.Reports
             var toolbar = new FlowLayoutPanel { Dock = DockStyle.Bottom, Height = 44, WrapContents = false };
             var generate = new Button { Text = "Generate report", Width = 146, Height = 36 };
             var reset = new Button { Text = "Reset filters", Width = 110, Height = 36 };
-            ModernTheme.Button(generate,true); ModernTheme.Button(reset); ModernTheme.Button(export); ModernTheme.Button(print);
-            toolbar.Controls.AddRange(new Control[] { generate,reset,export,print }); filters.Controls.Add(fields); filters.Controls.Add(toolbar); layout.Controls.Add(filters,0,1);
+            ModernTheme.Button(generate,true); ModernTheme.Button(reset); ModernTheme.Button(export); ModernTheme.Button(print); ModernTheme.Button(crystal);
+            toolbar.Controls.AddRange(new Control[] { generate,reset,export,print,crystal }); filters.Controls.Add(fields); filters.Controls.Add(toolbar); layout.Controls.Add(filters,0,1);
             var table = new Panel { Dock = DockStyle.Fill, BackColor = Color.White, Padding = new Padding(1), Margin = new Padding(0) }; table.Controls.Add(grid);table.Controls.Add(empty);empty.BringToFront();layout.Controls.Add(table,0,2);
             var footer = new Panel { Dock = DockStyle.Fill, Margin = new Padding(0) };
             summary.Location = new Point(0,12); status.Location = new Point(0,37); status.AutoSize = false; status.Width = 1000; status.Height = 24;
@@ -65,6 +66,7 @@ namespace InventorySystem.Forms.Reports
             reset.Click += (s,e) => { if (warehouse.Items.Count>0) warehouse.SelectedIndex=0; if(product.Items.Count>0)product.SelectedIndex=0; from.Value=DateTime.Today.AddDays(-30);to.Value=DateTime.Today; MarkDirty(); };
             warehouse.SelectedIndexChanged += (s,e) => MarkDirty(); product.SelectedIndexChanged += (s,e) => MarkDirty(); from.ValueChanged += (s,e) => MarkDirty(); to.ValueChanged += (s,e) => MarkDirty();
             export.Click += (s,e) => ExportCsv(); print.Click += (s,e) => PrintPreview();
+            crystal.Click += (s,e) => { if(result!=null && crystal.Enabled)CrystalReportWindow.Show(this,report,result,Text,generatedFilters); };
         }
 
         private static Panel Field(string title,Control control)
@@ -84,7 +86,7 @@ namespace InventorySystem.Forms.Reports
         }
         private void MarkDirty()
         {
-            export.Enabled=print.Enabled=false;
+            export.Enabled=print.Enabled=crystal.Enabled=false;
             status.ForeColor=ModernTheme.Muted;status.Text=result==null?"Choose your filters, then generate a report.":"Filters changed. Generate the report again to update the results.";
         }
         private void Generate()
@@ -93,7 +95,7 @@ namespace InventorySystem.Forms.Reports
             if ((report==InventoryReport.StockCard || report==InventoryReport.Movement) && from.Value.Date>to.Value.Date) { status.ForeColor=Color.Firebrick;status.Text="The start date must be on or before the end date.";return; }
             int w=warehouse.SelectedValue is int wid?wid:0,p=product.SelectedValue is int pid?pid:0;
             if(report==InventoryReport.StockCard && p==0) { status.ForeColor=Color.Firebrick;status.Text="Select a product to generate its stock card.";product.Focus();return; }
-            export.Enabled=print.Enabled=false;Cursor=Cursors.WaitCursor;
+            export.Enabled=print.Enabled=crystal.Enabled=false;Cursor=Cursors.WaitCursor;
             try
             {
                 result=ReportService.Generate(report,w,p,from.Value,to.Value);grid.DataSource=result;grid.Visible=result.Rows.Count>0;empty.Visible=result.Rows.Count==0;empty.Text="No records match these filters.\n\nTry a different warehouse, product, or date range.";
@@ -107,7 +109,7 @@ namespace InventorySystem.Forms.Reports
                 if(report==InventoryReport.StockCard || report==InventoryReport.Movement)generatedFilters+=" | "+from.Value.ToString("yyyy-MM-dd")+" to "+to.Value.ToString("yyyy-MM-dd");
                 summary.Text=Summary(result);status.ForeColor=ModernTheme.Muted;
                 status.Text=result.Rows.Count==0?"No records match these filters.":"Generated "+DateTime.Now.ToString("yyyy-MM-dd HH:mm")+" • "+(report==InventoryReport.Valuation||report==InventoryReport.LowStock?"Current stock balances":"Posted transactions only");
-                export.Enabled=print.Enabled=result.Rows.Count>0;
+                export.Enabled=print.Enabled=crystal.Enabled=result.Rows.Count>0;
             }
             catch(Exception) { status.ForeColor=Color.Firebrick;status.Text="The report could not be generated. Check your database connection and retry."; }
             finally { Cursor=Cursors.Default; }

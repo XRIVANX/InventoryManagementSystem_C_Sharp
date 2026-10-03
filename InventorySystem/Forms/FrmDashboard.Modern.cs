@@ -8,11 +8,11 @@ namespace InventorySystem.Forms
 {
     public partial class FrmDashboard
     {
-        private readonly Dictionary<ToolStripMenuItem, Button> navigation = new Dictionary<ToolStripMenuItem, Button>();
+        private readonly Dictionary<ToolStripMenuItem, ToolStripMenuItem> navigation = new Dictionary<ToolStripMenuItem, ToolStripMenuItem>();
         private Panel overview;
         private Form overviewWindow;
         private Label workspaceTitle;
-        private Button overviewButton;
+        private ToolStripMenuItem overviewButton;
 
         private void InitializeModernDashboard()
         {
@@ -25,28 +25,47 @@ namespace InventorySystem.Forms
             pnlKpi.Visible = false;
             foreach (Control control in Controls) if (control is MdiClient) control.BackColor = ModernTheme.Canvas;
 
-            var sidebar = new Panel { Dock = DockStyle.Left, Width = 222, BackColor = ModernTheme.Navy, Padding = new Padding(16), AutoScroll = true };
-            var nav = new FlowLayoutPanel { Dock = DockStyle.Fill, FlowDirection = FlowDirection.TopDown, WrapContents = false, AutoScroll = true, BackColor = ModernTheme.Navy };
-            var brand = ModernTheme.Label("INVENTORY\nSYSTEM", 18, Color.White, true);
-            brand.Margin = new Padding(8, 12, 0, 5);
-            nav.Controls.Add(brand);
-            var tagline = ModernTheme.Label("Your operations, connected.", 8, Color.FromArgb(150, 170, 193));
-            tagline.AutoSize = false; tagline.Size = new Size(160, 30);
-            tagline.Margin = new Padding(8, 0, 0, 24);
-            nav.Controls.Add(tagline);
-            overviewButton = NavButton("Overview", null, nav);
-            overviewButton.Click += (s, e) => { foreach (Form child in MdiChildren) child.Hide(); overview.Show(); overviewWindow.Show(); overviewWindow.WindowState = FormWindowState.Maximized; overviewWindow.Activate(); workspaceTitle.Text = "Overview"; SelectNavigation(overviewButton); };
-            AddSection(nav, "CATALOG", new[] { mnuProducts, mnuCategories, mnuSuppliers, mnuWarehouses, mnuUsers });
-            AddSection(nav, "OPERATIONS", new[] { mnuStockIn, mnuStockOut, mnuTransfer, mnuAdjustment, mnuPhysicalCount });
-            AddSection(nav, "INSIGHTS", new[] { mnuStockOnHand, mnuLowStockInquiry, mnuExpiringItems, mnuTransactionHistory });
-            AddSection(nav, "ACCOUNT", new[] { mnuChangePassword, mnuLogout, mnuExit });
-            sidebar.Controls.Add(nav);
-            var reportMenu = new MenuStrip { Dock = DockStyle.Top, BackColor = Color.White, Font = ModernTheme.Font(9), Padding = new Padding(18, 6, 18, 6) };
-            menuStrip1.Items.Remove(mnuReports); menuStrip1.Items.Remove(mnuHelp);
-            reportMenu.Items.Add(mnuReports); reportMenu.Items.Add(mnuHelp);
-            MainMenuStrip = reportMenu;
-
-            var header = new Panel { Dock = DockStyle.Top, Height = 86, BackColor = Color.White, Padding = new Padding(24, 16, 24, 12) };
+            var topBar = new Panel { Dock = DockStyle.Top, Height = 64, BackColor = ModernTheme.Navy };
+            var brand = ModernTheme.Label("InventorySystem", 16, Color.White, true);
+            brand.AutoSize = false; brand.Dock = DockStyle.Left; brand.Width = 230;
+            brand.TextAlign = ContentAlignment.MiddleLeft; brand.Padding = new Padding(24, 0, 0, 0);
+            menuStrip1.Items.Clear();
+            menuStrip1.Dock = DockStyle.Fill; menuStrip1.AutoSize = false;
+            menuStrip1.BackColor = ModernTheme.Navy; menuStrip1.ForeColor = Color.White;
+            menuStrip1.Font = ModernTheme.Font(10, true); menuStrip1.Padding = new Padding(4, 12, 12, 12);
+            menuStrip1.Renderer = new WorkspaceMenuRenderer(); menuStrip1.Visible = true;
+            mnuMasterfile.Text = "Catalog"; mnuTransactions.Text = "Operations";
+            mnuInquiry.Text = "Insights"; mnuFile.Text = "Account"; mnuHelp.Text = "Help";
+            mnuMasterfile.Click -= FrmDashboard_Load;
+            overviewButton = new ToolStripMenuItem("Overview");
+            overviewButton.Click += (s, e) =>
+            {
+                foreach (Form child in MdiChildren) child.Hide();
+                overview.Show(); overviewWindow.Show(); overviewWindow.WindowState = FormWindowState.Maximized;
+                overviewWindow.Activate(); workspaceTitle.Text = "Overview"; SelectNavigation(overviewButton);
+            };
+            menuStrip1.Items.AddRange(new ToolStripItem[] { overviewButton, mnuMasterfile, mnuTransactions, mnuInquiry, mnuReports, mnuHelp, mnuFile });
+            foreach (ToolStripMenuItem group in menuStrip1.Items)
+            {
+                group.Padding = new Padding(12, 6, 12, 6);
+                group.BackColor = ModernTheme.Navy; group.ForeColor = Color.White;
+                foreach (ToolStripItem entry in group.DropDownItems)
+                {
+                    entry.Font = ModernTheme.Font(10); entry.Padding = new Padding(8, 5, 12, 5);
+                    if (entry is ToolStripMenuItem item)
+                    {
+                        navigation.Add(item, group);
+                        item.Click += (s, e) =>
+                        {
+                            if (ActiveMdiChild != null && ActiveMdiChild != overviewWindow) SelectNavigation(group);
+                        };
+                    }
+                }
+                group.DropDown.Renderer = menuStrip1.Renderer;
+            }
+            topBar.Controls.Add(menuStrip1); topBar.Controls.Add(brand);
+            MainMenuStrip = menuStrip1;
+            var header = new Panel { Dock = DockStyle.Top, Height = 78, BackColor = Color.White, Padding = new Padding(24, 16, 24, 12) };
             workspaceTitle = ModernTheme.Label("Overview", 21, ModernTheme.Ink, true);
             workspaceTitle.Location = new Point(24, 12);
             header.Controls.Add(workspaceTitle);
@@ -98,15 +117,14 @@ namespace InventorySystem.Forms
                 action.Click += (s, e) => target.PerformClick(); actions.Controls.Add(action);
             }
             content.Controls.Add(actions); overview.Controls.Add(content);
-            Controls.Add(reportMenu); Controls.Add(header); Controls.Add(sidebar);
+            Controls.Add(header); Controls.Add(topBar);
             MdiClient workspace = null;
             foreach (Control control in Controls) if (control is MdiClient client) workspace = client;
             overviewWindow = new Form { Text = "Overview", MdiParent = this, FormBorderStyle = FormBorderStyle.None, ControlBox = false, ShowInTaskbar = false, BackColor = ModernTheme.Canvas };
             overviewWindow.Controls.Add(overview);
             Controls.SetChildIndex(statusStrip1, 0);
-            Controls.SetChildIndex(sidebar, 0);
+            Controls.SetChildIndex(topBar, 0);
             Controls.SetChildIndex(header, 0);
-            Controls.SetChildIndex(reportMenu, 0);
             Controls.SetChildIndex(workspace, 0);
             statusStrip1.BackColor = Color.White; statusStrip1.ForeColor = ModernTheme.Muted;
             statusStrip1.Items.Add(new ToolStripStatusLabel("InventorySystem   •   Ready") { Spring = true, TextAlign = ContentAlignment.MiddleLeft });
@@ -120,6 +138,7 @@ namespace InventorySystem.Forms
                 else
                 {
                     if (overviewWindow.Visible) overviewWindow.Hide();
+                    SelectNavigation(active is FrmAbout ? mnuHelp : null);
                     foreach (var entry in navigation)
                         if (string.Equals(entry.Key.Text, active.Text, StringComparison.OrdinalIgnoreCase)) SelectNavigation(entry.Value);
                 }
@@ -128,28 +147,38 @@ namespace InventorySystem.Forms
             ResumeLayout(true);
         }
 
-        private void AddSection(FlowLayoutPanel nav, string title, ToolStripMenuItem[] items)
+        private void SelectNavigation(ToolStripMenuItem selected)
         {
-            var label = ModernTheme.Label(title, 7.5f, Color.FromArgb(143, 163, 184), true);
-            label.Margin = new Padding(10, 18, 0, 8); nav.Controls.Add(label);
-            foreach (var item in items) NavButton(item.Text, item, nav);
+            foreach (ToolStripItem item in menuStrip1.Items)
+                item.BackColor = item == selected ? ModernTheme.Teal : ModernTheme.Navy;
+            menuStrip1.Invalidate();
         }
-        private Button NavButton(string text, ToolStripMenuItem item, FlowLayoutPanel nav)
+
+        private sealed class WorkspaceMenuRenderer : ToolStripProfessionalRenderer
         {
-            var button = new Button { Text = text, Width = 168, Height = 32, TextAlign = ContentAlignment.MiddleLeft, Padding = new Padding(10, 0, 0, 0), Margin = new Padding(0, 1, 0, 1), FlatStyle = FlatStyle.Flat, BackColor = ModernTheme.Navy, ForeColor = Color.FromArgb(211, 222, 234), Font = ModernTheme.Font(9), Cursor = Cursors.Hand };
-            button.FlatAppearance.BorderSize = 0; button.FlatAppearance.MouseOverBackColor = Color.FromArgb(36, 55, 77);
-            if (item != null)
+            public WorkspaceMenuRenderer() { RoundedEdges = false; }
+            protected override void OnRenderToolStripBackground(ToolStripRenderEventArgs e)
             {
-                navigation.Add(item, button);
-                button.Click += (s, e) => { if (item.Enabled) { item.PerformClick(); if (ActiveMdiChild != null) SelectNavigation(button); } };
-                item.EnabledChanged += (s, e) => button.Enabled = item.Enabled;
+                using (var brush = new SolidBrush(e.ToolStrip is MenuStrip ? ModernTheme.Navy : Color.White))
+                    e.Graphics.FillRectangle(brush, e.AffectedBounds);
             }
-            nav.Controls.Add(button); return button;
-        }
-        private void SelectNavigation(Button selected)
-        {
-            overviewButton.BackColor = overviewButton == selected ? ModernTheme.Teal : ModernTheme.Navy;
-            foreach (var button in navigation.Values) button.BackColor = button == selected ? ModernTheme.Teal : ModernTheme.Navy;
+            protected override void OnRenderMenuItemBackground(ToolStripItemRenderEventArgs e)
+            {
+                bool top = e.Item.Owner is MenuStrip;
+                Color color = top ? (e.Item.Selected || e.Item.Pressed ? ModernTheme.Teal : e.Item.BackColor)
+                    : (e.Item.Selected ? Color.FromArgb(218, 241, 237) : Color.White);
+                using (var brush = new SolidBrush(color)) e.Graphics.FillRectangle(brush, new Rectangle(Point.Empty, e.Item.Size));
+            }
+            protected override void OnRenderItemText(ToolStripItemTextRenderEventArgs e)
+            {
+                e.TextColor = !e.Item.Enabled ? ModernTheme.Muted : e.Item.Owner is MenuStrip ? Color.White : ModernTheme.Ink;
+                base.OnRenderItemText(e);
+            }
+            protected override void OnRenderToolStripBorder(ToolStripRenderEventArgs e)
+            {
+                if (e.ToolStrip is ToolStripDropDown)
+                    using (var pen = new Pen(ModernTheme.Line)) e.Graphics.DrawRectangle(pen, 0, 0, e.ToolStrip.Width - 1, e.ToolStrip.Height - 1);
+            }
         }
     }
 }
