@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data;
 using System.Windows.Forms;
 using InventorySystem.Data;
@@ -14,6 +14,7 @@ namespace InventorySystem.Forms.Trans
         public FrmBatchEntry(int productId)
         {
             InitializeComponent();
+            InventorySystem.Helpers.ModernTheme.Apply(this);
             _productId = productId;
         }
 

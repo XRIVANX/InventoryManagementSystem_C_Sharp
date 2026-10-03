@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows.Forms;
 using InventorySystem.Data;
 using InventorySystem.Helpers;
@@ -11,13 +11,8 @@ namespace InventorySystem.Forms.Auth
         public FrmLogin()
         {
             InitializeComponent();
+            InitializeModernLogin();
 
-            // Wire up the hover glow events for btnLogin and btnExit
-            btnLogin.MouseEnter += Button_MouseEnter;
-            btnLogin.MouseLeave += Button_MouseLeave;
-
-            btnExit.MouseEnter += Button_MouseEnter;
-            btnExit.MouseLeave += Button_MouseLeave;
         }
 
         private void FrmLogin_Load(object sender, EventArgs e)
@@ -65,27 +60,8 @@ namespace InventorySystem.Forms.Auth
         }
 
         // --- HOVER GLOW EVENT HANDLERS ---
-        private void Button_MouseEnter(object sender, EventArgs e)
-        {
-            if (sender is Button btn)
-            {
-                // Glowing bright green background with white text when hovered
-                btn.BackColor = System.Drawing.Color.FromArgb(32, 201, 103);
-                btn.ForeColor = System.Drawing.Color.White;
-            }
-        }
-
-        private void Button_MouseLeave(object sender, EventArgs e)
-        {
-            if (sender is Button btn)
-            {
-                // Reverts to transparent/no color with dark text when unhovered
-                btn.BackColor = System.Drawing.Color.Transparent;
-                btn.ForeColor = System.Drawing.Color.Black;
-            }
-        }
-        
-
+        private void Button_MouseEnter(object sender, EventArgs e) { }
+        private void Button_MouseLeave(object sender, EventArgs e) { }
         private void chkShow_CheckedChanged(object sender, EventArgs e)
             => txtPassword.PasswordChar = chkShow.Checked ? '\0' : '•';
 

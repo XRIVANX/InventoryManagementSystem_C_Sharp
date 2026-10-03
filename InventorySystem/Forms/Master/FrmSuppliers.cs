@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data;
 using System.Windows.Forms;
 using InventorySystem.Data;
@@ -15,6 +15,7 @@ namespace InventorySystem.Forms.Master
         public FrmSuppliers()
         {
             InitializeComponent();
+            InventorySystem.Helpers.ModernTheme.Apply(this);
         }
 
         private void FrmSuppliers_Load(object sender, EventArgs e)

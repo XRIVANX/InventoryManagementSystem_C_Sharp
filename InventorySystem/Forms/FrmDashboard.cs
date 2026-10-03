@@ -1,8 +1,9 @@
-﻿using InventorySystem.Data;
+using InventorySystem.Data;
 using InventorySystem.Forms.Auth;
 using InventorySystem.Forms.Inquiry;
 using InventorySystem.Forms.Master;
 using InventorySystem.Forms.Trans;
+using InventorySystem.Forms.Reports;
 using InventorySystem.Helpers;
 using System;
 using System.Data;
@@ -15,6 +16,7 @@ namespace InventorySystem.Forms
         public FrmDashboard()
         {
             InitializeComponent();
+            InitializeModernDashboard();
         }
 
         private void FrmDashboard_Load(object sender, EventArgs e)
@@ -55,7 +57,7 @@ namespace InventorySystem.Forms
         {
             foreach (Form f in MdiChildren)
             {
-                if (f is T) { f.Activate(); f.WindowState = FormWindowState.Maximized; return; }
+                if (f is T) { f.Show(); f.Activate(); f.WindowState = FormWindowState.Maximized; return; }
             }
             var child = new T { MdiParent = this, WindowState = FormWindowState.Maximized };
             child.FormClosed += (s, e) => LoadKpi();
@@ -70,7 +72,7 @@ namespace InventorySystem.Forms
                 if (f is FrmStockInquiry existing)
                 {
                     existing.ApplyLowStockFilter(lowStockOnly);
-                    existing.Activate();
+                    existing.Show(); existing.Activate();
                     existing.WindowState = FormWindowState.Maximized;
                     return;
                 }
@@ -103,9 +105,9 @@ namespace InventorySystem.Forms
             {
                 if (login.ShowDialog() == DialogResult.OK)
                 {
-                    foreach (Form f in MdiChildren) f.Close();
+                    foreach (Form f in MdiChildren) if (f != overviewWindow) f.Close();
                     Show();
-                    FrmDashboard_Load(null, null);
+                    FrmDashboard_Load(null, null); overviewButton.PerformClick();
                 }
                 else Close();
             }
@@ -130,18 +132,16 @@ namespace InventorySystem.Forms
         // ---- Inquiry menu ----
         private void mnuStockOnHand_Click(object sender, EventArgs e) => OpenInquiryForm(false);
         private void mnuLowStockInquiry_Click(object sender, EventArgs e) => OpenInquiryForm(true);
-        private void mnuExpiringItems_Click(object sender, EventArgs e) => NotYetBuilt("Expiring Items");
+        private void mnuExpiringItems_Click(object sender, EventArgs e) => OpenChild<FrmExpiringInquiry>();
         private void mnuTransactionHistory_Click(object sender, EventArgs e) => OpenChild<FrmMovementInquiry>();
 
-        // ---- Reports menu (stubs for now) ----
-        private void mnuRptValuation_Click(object sender, EventArgs e) => NotYetBuilt("Inventory Valuation Report");
-        private void mnuRptStockCard_Click(object sender, EventArgs e) => NotYetBuilt("Stock Card Report");
-        private void mnuRptLowStock_Click(object sender, EventArgs e) => NotYetBuilt("Low Stock Report");
-        private void mnuRptMovement_Click(object sender, EventArgs e) => NotYetBuilt("Movement Report");
+        // ---- Reports menu ----
+        private void mnuRptValuation_Click(object sender, EventArgs e) => OpenChild<FrmValuationReport>();
+        private void mnuRptStockCard_Click(object sender, EventArgs e) => OpenChild<FrmStockCardReport>();
+        private void mnuRptLowStock_Click(object sender, EventArgs e) => OpenChild<FrmLowStockReport>();
+        private void mnuRptMovement_Click(object sender, EventArgs e) => OpenChild<FrmMovementReport>();
 
         // ---- Help menu ----
-        private void mnuAbout_Click(object sender, EventArgs e)
-            => MessageBox.Show("Inventory Management System\nBuilt with C#, MSSQL, and Crystal Reports.",
-                                "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        private void mnuAbout_Click(object sender, EventArgs e) => OpenChild<FrmAbout>();
     }
 }

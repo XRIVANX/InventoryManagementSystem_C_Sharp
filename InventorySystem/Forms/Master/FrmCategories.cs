@@ -1,4 +1,4 @@
-﻿using InventorySystem.Data;
+using InventorySystem.Data;
 using InventorySystem.Helpers;
 using InventorySystem.Models;
 using InventorySystem.Services;
@@ -15,6 +15,7 @@ namespace InventorySystem.Forms.Master
         public FrmCategories()
         {
             InitializeComponent();
+            InventorySystem.Helpers.ModernTheme.Apply(this);
         }
 
         private void FrmCategories_Load(object sender, EventArgs e)

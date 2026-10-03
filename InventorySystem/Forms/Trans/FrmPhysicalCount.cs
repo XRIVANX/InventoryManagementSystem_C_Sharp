@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
@@ -15,6 +15,7 @@ namespace InventorySystem.Forms.Trans
         public FrmPhysicalCount()
         {
             InitializeComponent();
+            InventorySystem.Helpers.ModernTheme.Apply(this);
         }
 
         private void FrmPhysicalCount_Load(object sender, EventArgs e)

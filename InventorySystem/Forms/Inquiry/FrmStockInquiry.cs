@@ -1,4 +1,4 @@
-﻿using InventorySystem.Data;
+using InventorySystem.Data;
 using InventorySystem.Helpers;
 using System;
 using System.Data;
@@ -19,6 +19,7 @@ namespace InventorySystem.Forms.Inquiry
         public FrmStockInquiry(bool showLowStockOnly)
         {
             InitializeComponent();
+            InventorySystem.Helpers.ModernTheme.Apply(this);
             _showLowStockOnlyOnLoad = showLowStockOnly;
         }
 

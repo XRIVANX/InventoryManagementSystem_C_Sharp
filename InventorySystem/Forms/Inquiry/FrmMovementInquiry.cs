@@ -1,4 +1,4 @@
-﻿using InventorySystem.Data;
+using InventorySystem.Data;
 using InventorySystem.Helpers;
 using System;
 using System.Data;
@@ -11,6 +11,7 @@ namespace InventorySystem.Forms.Inquiry
         public FrmMovementInquiry()
         {
             InitializeComponent();
+            InventorySystem.Helpers.ModernTheme.Apply(this);
             this.Text = "Transaction History / Audit Trail";
         }
 
