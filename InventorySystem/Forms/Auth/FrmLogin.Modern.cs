@@ -36,5 +36,7 @@ namespace InventorySystem.Forms.Auth
             AcceptButton = btnLogin; CancelButton = btnExit;
             CenterCardPanel(); ResumeLayout(true);
         }
+
     }
 }
+

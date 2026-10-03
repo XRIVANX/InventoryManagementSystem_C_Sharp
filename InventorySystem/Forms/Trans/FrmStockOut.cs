@@ -414,6 +414,7 @@ namespace InventorySystem.Forms.Trans
             btnSaveDraft.Enabled = editable;
             btnNew.Enabled = _txnId > 0 || _status == "POSTED";
             btnPost.Enabled = _status == "DRAFT";
+            btnPrint.Enabled = _status == "POSTED" && _txnId > 0;
             lblStatusBadge.Text = _status;
         }
 
@@ -423,4 +424,5 @@ namespace InventorySystem.Forms.Trans
         }
     }
 }
+
 

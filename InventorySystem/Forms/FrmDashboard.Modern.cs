@@ -180,5 +180,7 @@ namespace InventorySystem.Forms
                     using (var pen = new Pen(ModernTheme.Line)) e.Graphics.DrawRectangle(pen, 0, 0, e.ToolStrip.Width - 1, e.ToolStrip.Height - 1);
             }
         }
+
     }
 }
+

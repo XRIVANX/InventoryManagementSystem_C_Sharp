@@ -336,9 +336,10 @@ namespace InventorySystem.Forms.Trans
             pnlLineEntry.Enabled = editable;
             btnSaveDraft.Enabled = editable;
             btnPost.Enabled = editable && _txnId > 0;
-            btnPrint.Enabled = _status == "POSTED";
+            btnPrint.Enabled = _status == "POSTED" && _txnId > 0;
             lblStatusBadge.Text = _status;
         }
     }
 }
+
 

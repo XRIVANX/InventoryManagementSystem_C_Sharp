@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -175,11 +175,11 @@
     <Compile Include="Helpers\ModernTheme.cs" />
     <Compile Include="Forms\FrmDashboard.Modern.cs">
       <DependentUpon>FrmDashboard.cs</DependentUpon>
-      <SubType>Form</SubType>
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="Forms\Auth\FrmLogin.Modern.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
-      <SubType>Form</SubType>
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Product.cs" />
@@ -206,8 +206,16 @@
     <Compile Include="Services\SupplierService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Services\WarehouseService.cs" />
+    <EmbeddedResource Include="Forms\Auth\FrmLogin.Modern.resx">
+      <ManifestResourceName>InventorySystem.Forms.Auth.FrmLogin.Modern</ManifestResourceName>
+      <DependentUpon>FrmLogin.Modern.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Auth\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmDashboard.Modern.resx">
+      <ManifestResourceName>InventorySystem.Forms.FrmDashboard.Modern</ManifestResourceName>
+      <DependentUpon>FrmDashboard.Modern.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmDashboard.resx">
       <DependentUpon>FrmDashboard.cs</DependentUpon>
