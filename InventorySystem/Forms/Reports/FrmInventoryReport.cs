@@ -34,6 +34,7 @@ namespace InventorySystem.Forms.Reports
 
         protected FrmInventoryReport(InventoryReport kind, string title, string description)
         {
+            Branding.ApplyIcon(this);
             report = kind; Text = title; ClientSize = new Size(1160, 700); BackColor = ModernTheme.Canvas;
             Font = ModernTheme.Font(9); AutoScaleMode = AutoScaleMode.Dpi;
             var layout = new TableLayoutPanel { Dock = DockStyle.Fill, ColumnCount = 1, RowCount = 4, Padding = new Padding(24) };
@@ -215,3 +216,5 @@ namespace InventorySystem.Forms.Reports
     public sealed class FrmLowStockReport : FrmInventoryReport { public FrmLowStockReport():base(InventoryReport.LowStock,"Low Stock Report","Find replenishment priorities, including products with no stock.") {} }
     public sealed class FrmMovementReport : FrmInventoryReport { public FrmMovementReport():base(InventoryReport.Movement,"Movement Report","Review posted stock transactions across a selected date range.") {} }
 }
+
+

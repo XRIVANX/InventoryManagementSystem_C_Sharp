@@ -15,6 +15,7 @@ namespace InventorySystem.Forms.Trans
         {
             InitializeComponent();
             InitializeModernBatch();
+            Branding.ApplyIcon(this);
             _productId = productId;
         }
 
@@ -118,3 +119,4 @@ namespace InventorySystem.Forms.Trans
         }
     }
 }
+

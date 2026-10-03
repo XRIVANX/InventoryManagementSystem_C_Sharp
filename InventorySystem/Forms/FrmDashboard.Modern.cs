@@ -21,14 +21,15 @@ namespace InventorySystem.Forms
             MinimumSize = new Size(1100, 740);
             Font = ModernTheme.Font(9);
             Text = "InventorySystem | Workspace";
+            Branding.ApplyIcon(this);
             menuStrip1.Visible = false;
             pnlKpi.Visible = false;
             foreach (Control control in Controls) if (control is MdiClient) control.BackColor = ModernTheme.Canvas;
 
             var topBar = new Panel { Dock = DockStyle.Top, Height = 64, BackColor = ModernTheme.Navy };
-            var brand = ModernTheme.Label("InventorySystem", 16, Color.White, true);
+            var brand = Branding.LogoPicture();
             brand.AutoSize = false; brand.Dock = DockStyle.Left; brand.Width = 230;
-            brand.TextAlign = ContentAlignment.MiddleLeft; brand.Padding = new Padding(24, 0, 0, 0);
+            brand.Padding = new Padding(16,8,16,8);
             menuStrip1.Items.Clear();
             menuStrip1.Dock = DockStyle.Fill; menuStrip1.AutoSize = false;
             menuStrip1.BackColor = ModernTheme.Navy; menuStrip1.ForeColor = Color.White;
@@ -183,4 +184,5 @@ namespace InventorySystem.Forms
 
     }
 }
+
 

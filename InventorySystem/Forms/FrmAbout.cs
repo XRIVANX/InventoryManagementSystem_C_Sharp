@@ -8,6 +8,7 @@ namespace InventorySystem.Forms
     {
         public FrmAbout()
         {
+            Branding.ApplyIcon(this);
             Text="About InventorySystem";ClientSize=new Size(1000,740);BackColor=ModernTheme.Canvas;Font=ModernTheme.Font(10);AutoScaleMode=AutoScaleMode.Dpi;
             var layout=new TableLayoutPanel { Dock=DockStyle.Fill,Padding=new Padding(28),ColumnCount=1,RowCount=3 };
             layout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent,100));layout.RowStyles.Add(new RowStyle(SizeType.Absolute,188));layout.RowStyles.Add(new RowStyle(SizeType.Percent,100));layout.RowStyles.Add(new RowStyle(SizeType.Absolute,40));
@@ -35,4 +36,6 @@ namespace InventorySystem.Forms
         }
     }
 }
+
+
 

@@ -36,6 +36,7 @@ namespace InventorySystem.Helpers
 
         public static void Apply(Form form)
         {
+            Branding.ApplyIcon(form);
             form.SuspendLayout();
             form.BackColor = Canvas;
             Style(form);
@@ -99,3 +100,5 @@ namespace InventorySystem.Helpers
         }
     }
 }
+
+

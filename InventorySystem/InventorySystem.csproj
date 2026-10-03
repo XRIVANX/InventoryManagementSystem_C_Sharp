@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <ApplicationIcon>Resources\InventorySystem-boxes-v2.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -173,6 +174,7 @@
     <Compile Include="Helpers\Validator.cs" />
     <Compile Include="Helpers\DraftChanges.cs" />
     <Compile Include="Helpers\ModernTheme.cs" />
+    <Compile Include="Helpers\Branding.cs" />
     <Compile Include="Forms\FrmDashboard.Modern.cs">
       <DependentUpon>FrmDashboard.cs</DependentUpon>
       <SubType>Code</SubType>
@@ -291,6 +293,18 @@
   <ItemGroup />
   <ItemGroup>
     <None Include="Resources\Gemini_Generated_Image_hq9x4whq9x4whq9x.jpg" />
+    <EmbeddedResource Include="Resources\InventorySystem-logo-v1.png">
+      <LogicalName>InventorySystem.Resources.BrandLogo.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\InventorySystem-logo-navy-v2.png">
+      <LogicalName>InventorySystem.Resources.BrandLogoDark.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\InventorySystem-boxes-v2.ico">
+      <LogicalName>InventorySystem.Resources.AppIcon.ico</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\LoginWelcome-v1.png">
+      <LogicalName>InventorySystem.Resources.LoginWelcome.png</LogicalName>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <EnableCrystalReports Condition="'$(EnableCrystalReports)' == ''">true</EnableCrystalReports>
@@ -324,3 +338,4 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
+

@@ -6,18 +6,50 @@ namespace InventorySystem.Forms.Auth
 {
     public partial class FrmLogin
     {
+        private void LoadWelcomeBackground()
+        {
+            using(var stream=typeof(FrmLogin).Assembly.GetManifestResourceStream("InventorySystem.Resources.LoginWelcome.png"))
+            {
+                if(stream==null) return;
+                using(var image=Image.FromStream(stream))
+                {
+                    var background=new Bitmap(image);
+                    BackgroundImage=background;
+                    Disposed+=(sender,args)=>background.Dispose();
+                }
+            }
+            SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint | ControlStyles.ResizeRedraw,true);
+        }
+
+        protected override void OnPaintBackground(PaintEventArgs e)
+        {
+            if(BackgroundImage==null || ClientSize.Width<=0 || ClientSize.Height<=0)
+            {
+                base.OnPaintBackground(e);return;
+            }
+            e.Graphics.Clear(BackColor);
+            float scale=System.Math.Max(ClientSize.Width/(float)BackgroundImage.Width,ClientSize.Height/(float)BackgroundImage.Height);
+            float width=BackgroundImage.Width*scale,height=BackgroundImage.Height*scale;
+            e.Graphics.InterpolationMode=System.Drawing.Drawing2D.InterpolationMode.HighQualityBilinear;
+            e.Graphics.DrawImage(BackgroundImage,new RectangleF((ClientSize.Width-width)/2,(ClientSize.Height-height)/2,width,height));
+        }
+
+
         private void InitializeModernLogin()
         {
             SuspendLayout();
+            AutoScaleMode=AutoScaleMode.Dpi; AutoScaleDimensions=new SizeF(96,96);
             BackgroundImage = null; BackColor = ModernTheme.Canvas;
+            LoadWelcomeBackground();
+            Branding.ApplyIcon(this);
             Text = "InventorySystem | Sign in"; StartPosition = FormStartPosition.CenterScreen;
             MinimumSize = new Size(900, 640); ClientSize = new Size(1040, 690);
             Font = ModernTheme.Font(10);
             LgnCardPanel.Size = new Size(820, 530); LgnCardPanel.BackColor = Color.White;
             LgnCardPanel.BackgroundImage = null; LgnCardPanel.BorderStyle = BorderStyle.None;
             var brand = new Panel { Dock = DockStyle.Left, Width = 335, BackColor = ModernTheme.Navy };
-            var name = ModernTheme.Label("INVENTORY\nSYSTEM", 25, Color.White, true); name.Location = new Point(32, 44);
-            var badge = ModernTheme.Label("OPERATIONS WORKSPACE", 8, Color.FromArgb(102, 211, 194), true); badge.Location = new Point(34, 144);
+            var name = Branding.LogoPicture(); name.SetBounds(28,30,279,108); name.Padding=new Padding(12);
+            var badge = ModernTheme.Label("OPERATIONS WORKSPACE", 8, Color.FromArgb(102, 211, 194), true); badge.Location = new Point(34, 158);
             var headline = ModernTheme.Label("Everything in stock.\nEverything in view.", 20, Color.White, true); headline.Location = new Point(32, 238);
             var description = ModernTheme.Label("One place to manage your products,\nstock movements, and daily operations.", 10, Color.FromArgb(178, 196, 216)); description.Location = new Point(34, 332);
             var footer = ModernTheme.Label("Clarity for every working day.", 9, Color.FromArgb(102, 211, 194)); footer.Location = new Point(34, 456);
@@ -39,4 +71,7 @@ namespace InventorySystem.Forms.Auth
 
     }
 }
+
+
+
 

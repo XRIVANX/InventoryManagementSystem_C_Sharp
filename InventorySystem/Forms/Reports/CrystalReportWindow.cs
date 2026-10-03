@@ -49,6 +49,7 @@ namespace InventorySystem.Forms.Reports
                 using(var form=new Form { Text=title+" | Crystal Reports",Width=1200,Height=850,StartPosition=FormStartPosition.CenterParent })
                 using(var viewer=new CrystalReportViewer { Dock=DockStyle.Fill,ToolPanelView=ToolPanelViewType.None,ShowRefreshButton=false })
                 {
+                    Helpers.Branding.ApplyIcon(form);
                     try
                     {
                         document.Load(path);
@@ -72,4 +73,6 @@ namespace InventorySystem.Forms.Reports
         }
     }
 }
+
+
 
