@@ -197,6 +197,18 @@ namespace InventorySystem.Forms.Reports
                 e.HasMorePages=printRow<result.Rows.Count;
             }
         }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // FrmInventoryReport
+            // 
+            this.ClientSize = new System.Drawing.Size(730, 253);
+            this.Name = "FrmInventoryReport";
+            this.ResumeLayout(false);
+
+        }
     }
     public sealed class FrmValuationReport : FrmInventoryReport { public FrmValuationReport():base(InventoryReport.Valuation,"Inventory Valuation","Current stock valued at each product's average cost.") {} }
     public sealed class FrmStockCardReport : FrmInventoryReport { public FrmStockCardReport():base(InventoryReport.StockCard,"Stock Card","Trace a product's posted movements, opening stock, and running balance.") {} }
