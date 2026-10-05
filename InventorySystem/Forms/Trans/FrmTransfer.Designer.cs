@@ -57,6 +57,10 @@
             this.cboProduct = new System.Windows.Forms.ComboBox();
             this.dgvLines = new System.Windows.Forms.DataGridView();
             this.pnlFooter = new System.Windows.Forms.Panel();
+            this.btnNew = new System.Windows.Forms.Button();
+            this.btnPrint = new System.Windows.Forms.Button();
+            this.btnPost = new System.Windows.Forms.Button();
+            this.btnSaveDraft = new System.Windows.Forms.Button();
             this.btnRemoveLine = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.lblTotalQty = new System.Windows.Forms.Label();
@@ -64,10 +68,6 @@
             this.lblTotalCost = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.btnSaveDraft = new System.Windows.Forms.Button();
-            this.btnPost = new System.Windows.Forms.Button();
-            this.btnPrint = new System.Windows.Forms.Button();
-            this.btnNew = new System.Windows.Forms.Button();
             this.ep = new System.Windows.Forms.ErrorProvider(this.components);
             this.pnlHeader.SuspendLayout();
             this.pnlLineEntry.SuspendLayout();
@@ -118,7 +118,7 @@
             // 
             // txtRemarks
             // 
-            this.txtRemarks.Location = new System.Drawing.Point(437, 44);
+            this.txtRemarks.Location = new System.Drawing.Point(377, 115);
             this.txtRemarks.Name = "txtRemarks";
             this.txtRemarks.Size = new System.Drawing.Size(100, 22);
             this.txtRemarks.TabIndex = 12;
@@ -126,7 +126,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(337, 50);
+            this.label4.Location = new System.Drawing.Point(277, 121);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(62, 16);
             this.label4.TabIndex = 11;
@@ -135,7 +135,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(337, 20);
+            this.label3.Location = new System.Drawing.Point(277, 91);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(94, 16);
             this.label3.TabIndex = 10;
@@ -143,7 +143,7 @@
             // 
             // txtReferenceNo
             // 
-            this.txtReferenceNo.Location = new System.Drawing.Point(437, 14);
+            this.txtReferenceNo.Location = new System.Drawing.Point(377, 85);
             this.txtReferenceNo.Name = "txtReferenceNo";
             this.txtReferenceNo.Size = new System.Drawing.Size(100, 22);
             this.txtReferenceNo.TabIndex = 9;
@@ -239,7 +239,7 @@
             // 
             // btnAddLine
             // 
-            this.btnAddLine.Location = new System.Drawing.Point(484, 41);
+            this.btnAddLine.Location = new System.Drawing.Point(496, 39);
             this.btnAddLine.Name = "btnAddLine";
             this.btnAddLine.Size = new System.Drawing.Size(75, 38);
             this.btnAddLine.TabIndex = 18;
@@ -250,7 +250,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(261, 44);
+            this.label12.Location = new System.Drawing.Point(273, 42);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(60, 16);
             this.label12.TabIndex = 16;
@@ -259,7 +259,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(261, 19);
+            this.label13.Location = new System.Drawing.Point(273, 17);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(55, 16);
             this.label13.TabIndex = 15;
@@ -268,7 +268,7 @@
             // lblAvailable
             // 
             this.lblAvailable.AutoSize = true;
-            this.lblAvailable.Location = new System.Drawing.Point(485, 16);
+            this.lblAvailable.Location = new System.Drawing.Point(497, 14);
             this.lblAvailable.Name = "lblAvailable";
             this.lblAvailable.Size = new System.Drawing.Size(74, 16);
             this.lblAvailable.TabIndex = 15;
@@ -276,14 +276,14 @@
             // 
             // txtUnitCost
             // 
-            this.txtUnitCost.Location = new System.Drawing.Point(331, 44);
+            this.txtUnitCost.Location = new System.Drawing.Point(377, 39);
             this.txtUnitCost.Name = "txtUnitCost";
             this.txtUnitCost.Size = new System.Drawing.Size(100, 22);
             this.txtUnitCost.TabIndex = 16;
             // 
             // txtQty
             // 
-            this.txtQty.Location = new System.Drawing.Point(331, 13);
+            this.txtQty.Location = new System.Drawing.Point(377, 11);
             this.txtQty.Name = "txtQty";
             this.txtQty.Size = new System.Drawing.Size(100, 22);
             this.txtQty.TabIndex = 15;
@@ -358,6 +358,46 @@
             this.pnlFooter.Size = new System.Drawing.Size(960, 91);
             this.pnlFooter.TabIndex = 3;
             // 
+            // btnNew
+            // 
+            this.btnNew.Location = new System.Drawing.Point(331, 15);
+            this.btnNew.Name = "btnNew";
+            this.btnNew.Size = new System.Drawing.Size(70, 30);
+            this.btnNew.TabIndex = 30;
+            this.btnNew.Text = "New";
+            this.btnNew.UseVisualStyleBackColor = true;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.Location = new System.Drawing.Point(484, 16);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(70, 29);
+            this.btnPrint.TabIndex = 29;
+            this.btnPrint.Text = "Print";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
+            // btnPost
+            // 
+            this.btnPost.Location = new System.Drawing.Point(407, 15);
+            this.btnPost.Name = "btnPost";
+            this.btnPost.Size = new System.Drawing.Size(70, 30);
+            this.btnPost.TabIndex = 28;
+            this.btnPost.Text = "Post";
+            this.btnPost.UseVisualStyleBackColor = true;
+            this.btnPost.Click += new System.EventHandler(this.btnPost_Click);
+            // 
+            // btnSaveDraft
+            // 
+            this.btnSaveDraft.Location = new System.Drawing.Point(331, 49);
+            this.btnSaveDraft.Name = "btnSaveDraft";
+            this.btnSaveDraft.Size = new System.Drawing.Size(100, 30);
+            this.btnSaveDraft.TabIndex = 27;
+            this.btnSaveDraft.Text = "Save Draft";
+            this.btnSaveDraft.UseVisualStyleBackColor = true;
+            this.btnSaveDraft.Click += new System.EventHandler(this.btnSaveDraft_Click);
+            // 
             // btnRemoveLine
             // 
             this.btnRemoveLine.Location = new System.Drawing.Point(453, 49);
@@ -421,46 +461,6 @@
             this.label11.Size = new System.Drawing.Size(69, 16);
             this.label11.TabIndex = 19;
             this.label11.Text = "Line Count";
-            // 
-            // btnSaveDraft
-            // 
-            this.btnSaveDraft.Location = new System.Drawing.Point(331, 49);
-            this.btnSaveDraft.Name = "btnSaveDraft";
-            this.btnSaveDraft.Size = new System.Drawing.Size(100, 30);
-            this.btnSaveDraft.TabIndex = 27;
-            this.btnSaveDraft.Text = "Save Draft";
-            this.btnSaveDraft.UseVisualStyleBackColor = true;
-            this.btnSaveDraft.Click += new System.EventHandler(this.btnSaveDraft_Click);
-            // 
-            // btnPost
-            // 
-            this.btnPost.Location = new System.Drawing.Point(407, 15);
-            this.btnPost.Name = "btnPost";
-            this.btnPost.Size = new System.Drawing.Size(70, 30);
-            this.btnPost.TabIndex = 28;
-            this.btnPost.Text = "Post";
-            this.btnPost.UseVisualStyleBackColor = true;
-            this.btnPost.Click += new System.EventHandler(this.btnPost_Click);
-            // 
-            // btnPrint
-            // 
-            this.btnPrint.Location = new System.Drawing.Point(484, 16);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(70, 29);
-            this.btnPrint.TabIndex = 29;
-            this.btnPrint.Text = "Print";
-            this.btnPrint.UseVisualStyleBackColor = true;
-            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
-            // 
-            // btnNew
-            // 
-            this.btnNew.Location = new System.Drawing.Point(331, 15);
-            this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(70, 30);
-            this.btnNew.TabIndex = 30;
-            this.btnNew.Text = "New";
-            this.btnNew.UseVisualStyleBackColor = true;
-            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // ep
             // 

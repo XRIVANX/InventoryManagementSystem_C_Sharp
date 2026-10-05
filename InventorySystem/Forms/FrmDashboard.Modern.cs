@@ -36,6 +36,10 @@ namespace InventorySystem.Forms
             menuStrip1.Font = ModernTheme.Font(10, true); menuStrip1.Padding = new Padding(4, 12, 12, 12);
             menuStrip1.Renderer = new WorkspaceMenuRenderer(); menuStrip1.Visible = true;
             mnuMasterfile.Text = "Catalog"; mnuTransactions.Text = "Operations";
+            var savedDraftsMenu = new ToolStripMenuItem("Saved Drafts");
+            savedDraftsMenu.Click += (s, e) => OpenSavedDrafts();
+            mnuTransactions.DropDownItems.Add(new ToolStripSeparator());
+            mnuTransactions.DropDownItems.Add(savedDraftsMenu);
             mnuInquiry.Text = "Insights"; mnuFile.Text = "Account"; mnuHelp.Text = "Help";
             mnuMasterfile.Click -= FrmDashboard_Load;
             overviewButton = new ToolStripMenuItem("Overview");
@@ -100,6 +104,15 @@ namespace InventorySystem.Forms
                 value.SetBounds(18, 38, 190, 46); value.Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right; value.AutoEllipsis = true;
                 var hint = ModernTheme.Label(hints[i], 8, ModernTheme.Muted); hint.Location = new Point(18, 94);
                 card.Controls.AddRange(new Control[] { title, value, hint }); metrics.Controls.Add(card, i % 4, i / 4);
+                if (i == 6)
+                {
+                    hint.Text = "Open saved drafts →";
+                    foreach (Control target in new Control[] { card, title, value, hint })
+                    {
+                        target.Cursor = Cursors.Hand;
+                        target.Click += (s, e) => savedDraftsMenu.PerformClick();
+                    }
+                }
             }
             var refresh = new Button { Text = "Refresh overview", Dock = DockStyle.Fill, Margin = new Padding(0, 0, 12, 12) };
             ModernTheme.Button(refresh); refresh.Click += (s, e) => LoadKpi(); metrics.Controls.Add(refresh, 3, 1);

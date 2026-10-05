@@ -260,7 +260,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(268, 46);
+            this.label9.Location = new System.Drawing.Point(234, 46);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(60, 16);
             this.label9.TabIndex = 7;
@@ -278,7 +278,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(273, 11);
+            this.label8.Location = new System.Drawing.Point(234, 9);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(55, 16);
             this.label8.TabIndex = 5;
@@ -295,16 +295,16 @@
             // 
             this.cboBatch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboBatch.FormattingEnabled = true;
-            this.cboBatch.Location = new System.Drawing.Point(69, 43);
+            this.cboBatch.Location = new System.Drawing.Point(97, 43);
             this.cboBatch.Name = "cboBatch";
-            this.cboBatch.Size = new System.Drawing.Size(172, 24);
+            this.cboBatch.Size = new System.Drawing.Size(121, 24);
             this.cboBatch.TabIndex = 3;
             this.cboBatch.SelectedIndexChanged += new System.EventHandler(this.cboBatch_SelectedIndexChanged);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(14, 49);
+            this.label7.Location = new System.Drawing.Point(22, 46);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(41, 16);
             this.label7.TabIndex = 2;
@@ -317,15 +317,15 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(45, 16);
             this.label6.TabIndex = 1;
-            this.label6.Text = "Prouct";
+            this.label6.Text = "Product";
             // 
             // cboProduct
             // 
             this.cboProduct.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboProduct.FormattingEnabled = true;
-            this.cboProduct.Location = new System.Drawing.Point(69, 6);
+            this.cboProduct.Location = new System.Drawing.Point(97, 6);
             this.cboProduct.Name = "cboProduct";
-            this.cboProduct.Size = new System.Drawing.Size(172, 24);
+            this.cboProduct.Size = new System.Drawing.Size(121, 24);
             this.cboProduct.TabIndex = 0;
             this.cboProduct.SelectedIndexChanged += new System.EventHandler(this.cboProduct_SelectedIndexChanged);
             // 

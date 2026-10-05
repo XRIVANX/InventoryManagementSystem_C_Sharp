@@ -173,15 +173,20 @@
     <Compile Include="Helpers\ErrorHandler.cs" />
     <Compile Include="Helpers\Validator.cs" />
     <Compile Include="Helpers\DraftChanges.cs" />
+    <Compile Include="Helpers\SavedDraftEditor.cs" />
+    <Compile Include="Services\DraftService.cs" />
+    <Compile Include="Forms\Trans\FrmSavedDrafts.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Helpers\ModernTheme.cs" />
     <Compile Include="Helpers\Branding.cs" />
     <Compile Include="Forms\FrmDashboard.Modern.cs">
       <DependentUpon>FrmDashboard.cs</DependentUpon>
-      <SubType>Code</SubType>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Auth\FrmLogin.Modern.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
-      <SubType>Code</SubType>
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Product.cs" />
@@ -338,4 +343,3 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
-

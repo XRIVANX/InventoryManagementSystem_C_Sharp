@@ -60,6 +60,63 @@ namespace InventorySystem.Forms
                 if (f is T) { f.Show(); f.Activate(); f.WindowState = FormWindowState.Maximized; return; }
             }
             var child = new T { MdiParent = this, WindowState = FormWindowState.Maximized };
+            TrackDraftEditor(child);
+            child.FormClosed += (s, e) => LoadKpi();
+            child.Show();
+        }
+
+        private void TrackDraftEditor(Form child)
+        {
+            if (child is ISavedDraftEditor editor)
+                editor.TransactionChanged += (s, e) =>
+                {
+                    LoadKpi();
+                    foreach (Form window in MdiChildren)
+                        if (window is FrmSavedDrafts drafts) drafts.RefreshDrafts();
+                };
+        }
+
+        private void OpenSavedDrafts()
+        {
+            foreach (Form child in MdiChildren)
+                if (child is FrmSavedDrafts existingDrafts)
+                {
+                    child.Show(); child.Activate(); child.WindowState = FormWindowState.Maximized;
+                    existingDrafts.RefreshDrafts();
+                    return;
+                }
+            var drafts = new FrmSavedDrafts { MdiParent = this, WindowState = FormWindowState.Maximized };
+            drafts.OpenDraftRequested += OpenSavedDraft;
+            drafts.DraftRemoved += id => LoadKpi();
+            drafts.Show();
+        }
+
+        private void OpenSavedDraft(int transactionId, string type)
+        {
+            if (type == "ADJUST" && !Session.IsManager)
+            {
+                MessageBox.Show("Only a Manager or Administrator can open adjustments.", "Access denied",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            foreach (Form existing in MdiChildren)
+                if (existing is ISavedDraftEditor editor && editor.TransactionId == transactionId)
+                {
+                    existing.Show(); existing.Activate(); existing.WindowState = FormWindowState.Maximized;
+                    return;
+                }
+            Form child;
+            switch (type)
+            {
+                case "IN": child = new FrmStockIn(transactionId); break;
+                case "OUT": child = new FrmStockOut(transactionId); break;
+                case "TRANSFER": child = new FrmTransfer(transactionId); break;
+                case "ADJUST": child = new FrmAdjustment(transactionId); break;
+                default: MessageBox.Show("This transaction type cannot be reopened."); return;
+            }
+            child.MdiParent = this;
+            child.WindowState = FormWindowState.Maximized;
+            TrackDraftEditor(child);
             child.FormClosed += (s, e) => LoadKpi();
             child.Show();
         }

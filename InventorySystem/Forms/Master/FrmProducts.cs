@@ -12,6 +12,7 @@ namespace InventorySystem.Forms.Master
     public partial class FrmProducts : Form
     {
         private int _currentId = 0;
+        private bool _filtersReady;
 
         public FrmProducts()
         {
@@ -22,6 +23,7 @@ namespace InventorySystem.Forms.Master
         private void FrmProducts_Load(object sender, EventArgs e)
         {
             LoadCombos();
+            _filtersReady = true;
             LoadGrid();
             SetMode(false);
         }
@@ -57,6 +59,8 @@ namespace InventorySystem.Forms.Master
 
         private void LoadGrid()
         {
+            if (!_filtersReady) return;
+
             try
             {
                 int? cat = cboCategoryFilter.SelectedValue as int?;

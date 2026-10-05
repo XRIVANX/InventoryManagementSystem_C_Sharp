@@ -7,15 +7,21 @@ using InventorySystem.Helpers;
 
 namespace InventorySystem.Forms.Trans
 {
-    public partial class FrmTransfer : Form
+    public partial class FrmTransfer : Form, ISavedDraftEditor
     {
         private DataTable _lines;
         private readonly DraftChanges _draftChanges = new DraftChanges();
         private int _txnId = 0;
         private string _status = "NEW";
+        private readonly int _draftToOpen;
+        public int TransactionId => _txnId;
+        public event EventHandler TransactionChanged;
 
-        public FrmTransfer()
+        public FrmTransfer() : this(0) { }
+
+        public FrmTransfer(int draftId)
         {
+            _draftToOpen = draftId;
             InitializeComponent();
             _draftChanges.Watch(pnlHeader);
             InventorySystem.Helpers.ModernTheme.Apply(this);
@@ -26,6 +32,29 @@ namespace InventorySystem.Forms.Trans
             InitLinesTable();
             LoadCombos();
             NewDocument();
+            if (_draftToOpen > 0)
+            {
+                try { RestoreSavedDraft(InventorySystem.Services.DraftService.Load(_draftToOpen, "TRANSFER")); }
+                catch (Exception ex) { ErrorHandler.Handle(ex, "Open saved draft"); Close(); }
+            }
+        }
+
+        internal void RestoreSavedDraft(InventorySystem.Services.SavedDraft draft)
+        {
+            var header = draft.Header;
+            var first = draft.Lines.Rows[0];
+            dtpDate.Value = Convert.ToDateTime(header["TransactionDate"]);
+            txtReferenceNo.Text = header["ReferenceNo"].ToString();
+            txtRemarks.Text = header["Remarks"].ToString();
+            SavedDraftEditor.SelectSavedValue(cboFromWarehouse, first["FromWarehouseID"], first["FromWarehouseName"]);
+            SavedDraftEditor.SelectSavedValue(cboToWarehouse, first["ToWarehouseID"], first["ToWarehouseName"]);
+            SavedDraftEditor.RestoreLines(_lines, draft.Lines);
+            _txnId = Convert.ToInt32(header["TransactionID"]);
+            _status = "DRAFT";
+            lblTxnNo.Text = header["TransactionNo"].ToString();
+            UpdateTotals();
+            UpdateButtons();
+            _draftChanges.MarkSaved();
         }
 
         private void InitLinesTable()
@@ -338,7 +367,9 @@ namespace InventorySystem.Forms.Trans
                     else
                     {
                         using (var cmd = new SqlCommand(
-                            @"UPDATE StockTransaction SET TransactionDate=@dt, ReferenceNo=@ref, Remarks=@rem
+                            @"IF NOT EXISTS (SELECT 1 FROM StockTransaction WITH (UPDLOCK, HOLDLOCK) WHERE TransactionID=@id AND Status='DRAFT')
+                                  THROW 53010, 'This draft is no longer editable. Refresh Saved Drafts.', 1;
+                              UPDATE StockTransaction SET TransactionDate=@dt, ReferenceNo=@ref, Remarks=@rem
                                WHERE TransactionID=@id AND Status='DRAFT';
                               DELETE FROM StockTransactionLine WHERE TransactionID=@id;", cn, tx))
                         {
@@ -372,6 +403,7 @@ namespace InventorySystem.Forms.Trans
                 _draftChanges.MarkSaved();
                 _status = "DRAFT";
                 UpdateButtons();
+                TransactionChanged?.Invoke(this, EventArgs.Empty);
                 MessageBox.Show("Draft saved as " + lblTxnNo.Text +
                                 ".\nClick POST to move the stock.", "Saved",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -395,6 +427,7 @@ namespace InventorySystem.Forms.Trans
 
                 _status = "POSTED";
                 UpdateButtons();
+                TransactionChanged?.Invoke(this, EventArgs.Empty);
                 UpdateTotals();
                 MessageBox.Show("Transfer " + lblTxnNo.Text + " posted. Inventory updated.",
                     "Posted", MessageBoxButtons.OK, MessageBoxIcon.Information);

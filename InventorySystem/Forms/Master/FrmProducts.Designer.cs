@@ -107,6 +107,7 @@
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(121, 24);
             this.txtSearch.TabIndex = 0;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // lblCount
             // 
@@ -124,6 +125,7 @@
             this.cboStatusFilter.Name = "cboStatusFilter";
             this.cboStatusFilter.Size = new System.Drawing.Size(121, 24);
             this.cboStatusFilter.TabIndex = 2;
+            this.cboStatusFilter.SelectedIndexChanged += new System.EventHandler(this.cboStatusFilter_SelectedIndexChanged);
             // 
             // cboCategoryFilter
             // 
@@ -132,6 +134,7 @@
             this.cboCategoryFilter.Name = "cboCategoryFilter";
             this.cboCategoryFilter.Size = new System.Drawing.Size(121, 24);
             this.cboCategoryFilter.TabIndex = 1;
+            this.cboCategoryFilter.SelectedIndexChanged += new System.EventHandler(this.cboCategoryFilter_SelectedIndexChanged);
             // 
             // dgvProducts
             // 

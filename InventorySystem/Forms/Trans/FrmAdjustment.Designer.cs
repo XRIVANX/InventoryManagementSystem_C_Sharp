@@ -45,31 +45,31 @@
             this.lblTxnNo = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlFooter = new System.Windows.Forms.Panel();
-            this.pnlLineEntry = new System.Windows.Forms.Panel();
-            this.cboAdjustType = new System.Windows.Forms.ComboBox();
-            this.cboBatch = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lblCurrentOnHand = new System.Windows.Forms.Label();
-            this.btnAddLine = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.lblTotalQty = new System.Windows.Forms.Label();
-            this.lblLineCount = new System.Windows.Forms.Label();
-            this.btnRemoveLine = new System.Windows.Forms.Button();
-            this.btnSaveDraft = new System.Windows.Forms.Button();
+            this.lblTotalCost = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.btnNew = new System.Windows.Forms.Button();
             this.btnPrint = new System.Windows.Forms.Button();
             this.btnPost = new System.Windows.Forms.Button();
-            this.btnNew = new System.Windows.Forms.Button();
-            this.ep = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnSaveDraft = new System.Windows.Forms.Button();
+            this.btnRemoveLine = new System.Windows.Forms.Button();
+            this.lblTotalQty = new System.Windows.Forms.Label();
+            this.lblLineCount = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.pnlLineEntry = new System.Windows.Forms.Panel();
+            this.txtQty = new System.Windows.Forms.TextBox();
+            this.Quantity = new System.Windows.Forms.Label();
             this.cboProduct = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.btnAddLine = new System.Windows.Forms.Button();
+            this.cboAdjustType = new System.Windows.Forms.ComboBox();
+            this.lblCurrentOnHand = new System.Windows.Forms.Label();
+            this.cboBatch = new System.Windows.Forms.ComboBox();
             this.txtUnitCost = new System.Windows.Forms.TextBox();
-            this.Quantity = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.lblTotalCost = new System.Windows.Forms.Label();
-            this.txtQty = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.ep = new System.Windows.Forms.ErrorProvider(this.components);
             this.dgvLines = new System.Windows.Forms.DataGridView();
             this.pnlHeader.SuspendLayout();
             this.pnlFooter.SuspendLayout();
@@ -103,7 +103,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(568, 50);
+            this.label4.Location = new System.Drawing.Point(476, 80);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(44, 16);
             this.label4.TabIndex = 15;
@@ -111,7 +111,7 @@
             // 
             // txtRemarks
             // 
-            this.txtRemarks.Location = new System.Drawing.Point(424, 85);
+            this.txtRemarks.Location = new System.Drawing.Point(332, 115);
             this.txtRemarks.Name = "txtRemarks";
             this.txtRemarks.Size = new System.Drawing.Size(100, 22);
             this.txtRemarks.TabIndex = 14;
@@ -119,7 +119,7 @@
             // lblStatusBadge
             // 
             this.lblStatusBadge.AutoSize = true;
-            this.lblStatusBadge.Location = new System.Drawing.Point(618, 50);
+            this.lblStatusBadge.Location = new System.Drawing.Point(526, 80);
             this.lblStatusBadge.Name = "lblStatusBadge";
             this.lblStatusBadge.Size = new System.Drawing.Size(34, 16);
             this.lblStatusBadge.TabIndex = 13;
@@ -128,7 +128,7 @@
             // Remarks
             // 
             this.Remarks.AutoSize = true;
-            this.Remarks.Location = new System.Drawing.Point(327, 85);
+            this.Remarks.Location = new System.Drawing.Point(235, 115);
             this.Remarks.Name = "Remarks";
             this.Remarks.Size = new System.Drawing.Size(62, 16);
             this.Remarks.TabIndex = 12;
@@ -136,7 +136,7 @@
             // 
             // txtReferenceNo
             // 
-            this.txtReferenceNo.Location = new System.Drawing.Point(424, 47);
+            this.txtReferenceNo.Location = new System.Drawing.Point(332, 77);
             this.txtReferenceNo.Name = "txtReferenceNo";
             this.txtReferenceNo.Size = new System.Drawing.Size(100, 22);
             this.txtReferenceNo.TabIndex = 11;
@@ -179,7 +179,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(327, 53);
+            this.label6.Location = new System.Drawing.Point(235, 83);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(91, 16);
             this.label6.TabIndex = 6;
@@ -240,137 +240,33 @@
             this.pnlFooter.Size = new System.Drawing.Size(1174, 100);
             this.pnlFooter.TabIndex = 1;
             // 
-            // pnlLineEntry
+            // lblTotalCost
             // 
-            this.pnlLineEntry.Controls.Add(this.txtQty);
-            this.pnlLineEntry.Controls.Add(this.Quantity);
-            this.pnlLineEntry.Controls.Add(this.cboProduct);
-            this.pnlLineEntry.Controls.Add(this.label11);
-            this.pnlLineEntry.Controls.Add(this.btnAddLine);
-            this.pnlLineEntry.Controls.Add(this.cboAdjustType);
-            this.pnlLineEntry.Controls.Add(this.lblCurrentOnHand);
-            this.pnlLineEntry.Controls.Add(this.cboBatch);
-            this.pnlLineEntry.Controls.Add(this.txtUnitCost);
-            this.pnlLineEntry.Controls.Add(this.label9);
-            this.pnlLineEntry.Controls.Add(this.label5);
-            this.pnlLineEntry.Controls.Add(this.label2);
-            this.pnlLineEntry.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlLineEntry.Location = new System.Drawing.Point(0, 151);
-            this.pnlLineEntry.Name = "pnlLineEntry";
-            this.pnlLineEntry.Size = new System.Drawing.Size(1174, 100);
-            this.pnlLineEntry.TabIndex = 3;
+            this.lblTotalCost.AutoSize = true;
+            this.lblTotalCost.Location = new System.Drawing.Point(121, 75);
+            this.lblTotalCost.Name = "lblTotalCost";
+            this.lblTotalCost.Size = new System.Drawing.Size(31, 16);
+            this.lblTotalCost.TabIndex = 30;
+            this.lblTotalCost.Text = "0.00";
             // 
-            // cboAdjustType
+            // label12
             // 
-            this.cboAdjustType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboAdjustType.FormattingEnabled = true;
-            this.cboAdjustType.Location = new System.Drawing.Point(101, 65);
-            this.cboAdjustType.Name = "cboAdjustType";
-            this.cboAdjustType.Size = new System.Drawing.Size(121, 24);
-            this.cboAdjustType.TabIndex = 19;
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(14, 75);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(68, 16);
+            this.label12.TabIndex = 29;
+            this.label12.Text = "Total Cost";
             // 
-            // cboBatch
+            // btnNew
             // 
-            this.cboBatch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboBatch.FormattingEnabled = true;
-            this.cboBatch.Location = new System.Drawing.Point(101, 37);
-            this.cboBatch.Name = "cboBatch";
-            this.cboBatch.Size = new System.Drawing.Size(121, 24);
-            this.cboBatch.TabIndex = 18;
-            this.cboBatch.SelectedIndexChanged += new System.EventHandler(this.cboBatch_SelectedIndexChanged);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(14, 65);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(82, 16);
-            this.label2.TabIndex = 17;
-            this.label2.Text = "Adjust Type ";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(14, 40);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(41, 16);
-            this.label5.TabIndex = 16;
-            this.label5.Text = "Batch";
-            // 
-            // lblCurrentOnHand
-            // 
-            this.lblCurrentOnHand.AutoSize = true;
-            this.lblCurrentOnHand.Location = new System.Drawing.Point(307, 67);
-            this.lblCurrentOnHand.Name = "lblCurrentOnHand";
-            this.lblCurrentOnHand.Size = new System.Drawing.Size(60, 16);
-            this.lblCurrentOnHand.TabIndex = 18;
-            this.lblCurrentOnHand.Text = "On hand:";
-            // 
-            // btnAddLine
-            // 
-            this.btnAddLine.Location = new System.Drawing.Point(551, 23);
-            this.btnAddLine.Name = "btnAddLine";
-            this.btnAddLine.Size = new System.Drawing.Size(75, 41);
-            this.btnAddLine.TabIndex = 20;
-            this.btnAddLine.Text = "Add Line";
-            this.btnAddLine.UseVisualStyleBackColor = true;
-            this.btnAddLine.Click += new System.EventHandler(this.btnAddLine_Click);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(14, 51);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(89, 16);
-            this.label7.TabIndex = 18;
-            this.label7.Text = "Total Quantity";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(14, 25);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(69, 16);
-            this.label10.TabIndex = 16;
-            this.label10.Text = "Line Count";
-            // 
-            // lblTotalQty
-            // 
-            this.lblTotalQty.AutoSize = true;
-            this.lblTotalQty.Location = new System.Drawing.Point(121, 51);
-            this.lblTotalQty.Name = "lblTotalQty";
-            this.lblTotalQty.Size = new System.Drawing.Size(31, 16);
-            this.lblTotalQty.TabIndex = 20;
-            this.lblTotalQty.Text = "0.00";
-            // 
-            // lblLineCount
-            // 
-            this.lblLineCount.AutoSize = true;
-            this.lblLineCount.Location = new System.Drawing.Point(121, 25);
-            this.lblLineCount.Name = "lblLineCount";
-            this.lblLineCount.Size = new System.Drawing.Size(31, 16);
-            this.lblLineCount.TabIndex = 19;
-            this.lblLineCount.Text = "0.00";
-            // 
-            // btnRemoveLine
-            // 
-            this.btnRemoveLine.Location = new System.Drawing.Point(438, 51);
-            this.btnRemoveLine.Name = "btnRemoveLine";
-            this.btnRemoveLine.Size = new System.Drawing.Size(122, 35);
-            this.btnRemoveLine.TabIndex = 21;
-            this.btnRemoveLine.Text = "Remove Line";
-            this.btnRemoveLine.UseVisualStyleBackColor = true;
-            this.btnRemoveLine.Click += new System.EventHandler(this.btnRemoveLine_Click);
-            // 
-            // btnSaveDraft
-            // 
-            this.btnSaveDraft.Location = new System.Drawing.Point(310, 51);
-            this.btnSaveDraft.Name = "btnSaveDraft";
-            this.btnSaveDraft.Size = new System.Drawing.Size(122, 35);
-            this.btnSaveDraft.TabIndex = 22;
-            this.btnSaveDraft.Text = "Draft Save";
-            this.btnSaveDraft.UseVisualStyleBackColor = true;
-            this.btnSaveDraft.Click += new System.EventHandler(this.btnSaveDraft_Click);
+            this.btnNew.Location = new System.Drawing.Point(310, 14);
+            this.btnNew.Name = "btnNew";
+            this.btnNew.Size = new System.Drawing.Size(81, 31);
+            this.btnNew.TabIndex = 28;
+            this.btnNew.Text = "New";
+            this.btnNew.UseVisualStyleBackColor = true;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // btnPrint
             // 
@@ -392,19 +288,97 @@
             this.btnPost.UseVisualStyleBackColor = true;
             this.btnPost.Click += new System.EventHandler(this.btnPost_Click);
             // 
-            // btnNew
+            // btnSaveDraft
             // 
-            this.btnNew.Location = new System.Drawing.Point(310, 14);
-            this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(81, 31);
-            this.btnNew.TabIndex = 28;
-            this.btnNew.Text = "New";
-            this.btnNew.UseVisualStyleBackColor = true;
-            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
+            this.btnSaveDraft.Location = new System.Drawing.Point(310, 51);
+            this.btnSaveDraft.Name = "btnSaveDraft";
+            this.btnSaveDraft.Size = new System.Drawing.Size(122, 35);
+            this.btnSaveDraft.TabIndex = 22;
+            this.btnSaveDraft.Text = "Draft Save";
+            this.btnSaveDraft.UseVisualStyleBackColor = true;
+            this.btnSaveDraft.Click += new System.EventHandler(this.btnSaveDraft_Click);
             // 
-            // ep
+            // btnRemoveLine
             // 
-            this.ep.ContainerControl = this;
+            this.btnRemoveLine.Location = new System.Drawing.Point(438, 51);
+            this.btnRemoveLine.Name = "btnRemoveLine";
+            this.btnRemoveLine.Size = new System.Drawing.Size(122, 35);
+            this.btnRemoveLine.TabIndex = 21;
+            this.btnRemoveLine.Text = "Remove Line";
+            this.btnRemoveLine.UseVisualStyleBackColor = true;
+            this.btnRemoveLine.Click += new System.EventHandler(this.btnRemoveLine_Click);
+            // 
+            // lblTotalQty
+            // 
+            this.lblTotalQty.AutoSize = true;
+            this.lblTotalQty.Location = new System.Drawing.Point(121, 51);
+            this.lblTotalQty.Name = "lblTotalQty";
+            this.lblTotalQty.Size = new System.Drawing.Size(31, 16);
+            this.lblTotalQty.TabIndex = 20;
+            this.lblTotalQty.Text = "0.00";
+            // 
+            // lblLineCount
+            // 
+            this.lblLineCount.AutoSize = true;
+            this.lblLineCount.Location = new System.Drawing.Point(121, 25);
+            this.lblLineCount.Name = "lblLineCount";
+            this.lblLineCount.Size = new System.Drawing.Size(31, 16);
+            this.lblLineCount.TabIndex = 19;
+            this.lblLineCount.Text = "0.00";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(14, 51);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(89, 16);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "Total Quantity";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(14, 25);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(69, 16);
+            this.label10.TabIndex = 16;
+            this.label10.Text = "Line Count";
+            // 
+            // pnlLineEntry
+            // 
+            this.pnlLineEntry.Controls.Add(this.txtQty);
+            this.pnlLineEntry.Controls.Add(this.Quantity);
+            this.pnlLineEntry.Controls.Add(this.cboProduct);
+            this.pnlLineEntry.Controls.Add(this.label11);
+            this.pnlLineEntry.Controls.Add(this.btnAddLine);
+            this.pnlLineEntry.Controls.Add(this.cboAdjustType);
+            this.pnlLineEntry.Controls.Add(this.lblCurrentOnHand);
+            this.pnlLineEntry.Controls.Add(this.cboBatch);
+            this.pnlLineEntry.Controls.Add(this.txtUnitCost);
+            this.pnlLineEntry.Controls.Add(this.label9);
+            this.pnlLineEntry.Controls.Add(this.label5);
+            this.pnlLineEntry.Controls.Add(this.label2);
+            this.pnlLineEntry.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlLineEntry.Location = new System.Drawing.Point(0, 151);
+            this.pnlLineEntry.Name = "pnlLineEntry";
+            this.pnlLineEntry.Size = new System.Drawing.Size(1174, 100);
+            this.pnlLineEntry.TabIndex = 3;
+            // 
+            // txtQty
+            // 
+            this.txtQty.Location = new System.Drawing.Point(332, 6);
+            this.txtQty.Name = "txtQty";
+            this.txtQty.Size = new System.Drawing.Size(100, 22);
+            this.txtQty.TabIndex = 16;
+            // 
+            // Quantity
+            // 
+            this.Quantity.AutoSize = true;
+            this.Quantity.Location = new System.Drawing.Point(235, 14);
+            this.Quantity.Name = "Quantity";
+            this.Quantity.Size = new System.Drawing.Size(55, 16);
+            this.Quantity.TabIndex = 23;
+            this.Quantity.Text = "Quantity";
             // 
             // cboProduct
             // 
@@ -425,57 +399,83 @@
             this.label11.TabIndex = 21;
             this.label11.Text = "Product";
             // 
-            // label9
+            // btnAddLine
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(307, 43);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(60, 16);
-            this.label9.TabIndex = 16;
-            this.label9.Text = "Unit Cost";
+            this.btnAddLine.Location = new System.Drawing.Point(479, 20);
+            this.btnAddLine.Name = "btnAddLine";
+            this.btnAddLine.Size = new System.Drawing.Size(75, 41);
+            this.btnAddLine.TabIndex = 20;
+            this.btnAddLine.Text = "Add Line";
+            this.btnAddLine.UseVisualStyleBackColor = true;
+            this.btnAddLine.Click += new System.EventHandler(this.btnAddLine_Click);
+            // 
+            // cboAdjustType
+            // 
+            this.cboAdjustType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboAdjustType.FormattingEnabled = true;
+            this.cboAdjustType.Location = new System.Drawing.Point(101, 65);
+            this.cboAdjustType.Name = "cboAdjustType";
+            this.cboAdjustType.Size = new System.Drawing.Size(121, 24);
+            this.cboAdjustType.TabIndex = 19;
+            // 
+            // lblCurrentOnHand
+            // 
+            this.lblCurrentOnHand.AutoSize = true;
+            this.lblCurrentOnHand.Location = new System.Drawing.Point(235, 73);
+            this.lblCurrentOnHand.Name = "lblCurrentOnHand";
+            this.lblCurrentOnHand.Size = new System.Drawing.Size(60, 16);
+            this.lblCurrentOnHand.TabIndex = 18;
+            this.lblCurrentOnHand.Text = "On hand:";
+            // 
+            // cboBatch
+            // 
+            this.cboBatch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboBatch.FormattingEnabled = true;
+            this.cboBatch.Location = new System.Drawing.Point(101, 37);
+            this.cboBatch.Name = "cboBatch";
+            this.cboBatch.Size = new System.Drawing.Size(121, 24);
+            this.cboBatch.TabIndex = 18;
+            this.cboBatch.SelectedIndexChanged += new System.EventHandler(this.cboBatch_SelectedIndexChanged);
             // 
             // txtUnitCost
             // 
             this.txtUnitCost.BackColor = System.Drawing.SystemColors.Window;
-            this.txtUnitCost.Location = new System.Drawing.Point(404, 40);
+            this.txtUnitCost.Location = new System.Drawing.Point(332, 37);
             this.txtUnitCost.Name = "txtUnitCost";
             this.txtUnitCost.ReadOnly = true;
             this.txtUnitCost.Size = new System.Drawing.Size(100, 22);
             this.txtUnitCost.TabIndex = 17;
             // 
-            // Quantity
+            // label9
             // 
-            this.Quantity.AutoSize = true;
-            this.Quantity.Location = new System.Drawing.Point(307, 14);
-            this.Quantity.Name = "Quantity";
-            this.Quantity.Size = new System.Drawing.Size(55, 16);
-            this.Quantity.TabIndex = 23;
-            this.Quantity.Text = "Quantity";
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(235, 43);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(60, 16);
+            this.label9.TabIndex = 16;
+            this.label9.Text = "Unit Cost";
             // 
-            // label12
+            // label5
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(14, 75);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(68, 16);
-            this.label12.TabIndex = 29;
-            this.label12.Text = "Total Cost";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(14, 40);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(41, 16);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "Batch";
             // 
-            // lblTotalCost
+            // label2
             // 
-            this.lblTotalCost.AutoSize = true;
-            this.lblTotalCost.Location = new System.Drawing.Point(121, 75);
-            this.lblTotalCost.Name = "lblTotalCost";
-            this.lblTotalCost.Size = new System.Drawing.Size(31, 16);
-            this.lblTotalCost.TabIndex = 30;
-            this.lblTotalCost.Text = "0.00";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(14, 65);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(82, 16);
+            this.label2.TabIndex = 17;
+            this.label2.Text = "Adjust Type ";
             // 
-            // txtQty
+            // ep
             // 
-            this.txtQty.Location = new System.Drawing.Point(404, 8);
-            this.txtQty.Name = "txtQty";
-            this.txtQty.Size = new System.Drawing.Size(100, 22);
-            this.txtQty.TabIndex = 16;
+            this.ep.ContainerControl = this;
             // 
             // dgvLines
             // 
