@@ -57,6 +57,7 @@
             this.mnuRptMovement = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuVideo = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.pnlKpi = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -322,7 +323,8 @@
             // mnuHelp
             // 
             this.mnuHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuAbout});
+            this.mnuAbout,
+            this.mnuVideo});
             this.mnuHelp.Name = "mnuHelp";
             this.mnuHelp.Size = new System.Drawing.Size(59, 26);
             this.mnuHelp.Text = " Help";
@@ -333,6 +335,13 @@
             this.mnuAbout.Size = new System.Drawing.Size(133, 26);
             this.mnuAbout.Text = "About";
             this.mnuAbout.Click += new System.EventHandler(this.mnuAbout_Click);
+            //
+            // mnuVideo
+            //
+            this.mnuVideo.Name = "mnuVideo";
+            this.mnuVideo.Size = new System.Drawing.Size(133, 26);
+            this.mnuVideo.Text = "Video";
+            this.mnuVideo.Click += new System.EventHandler(this.mnuVideo_Click);
             // 
             // statusStrip1
             // 
@@ -695,6 +704,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuRptLowStock;
         private System.Windows.Forms.ToolStripMenuItem mnuRptMovement;
         private System.Windows.Forms.ToolStripMenuItem mnuAbout;
+        private System.Windows.Forms.ToolStripMenuItem mnuVideo;
         private System.Windows.Forms.Panel pnlKpi;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblTotalProducts;

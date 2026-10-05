@@ -19,6 +19,7 @@ namespace InventorySystem.Forms.Reports
                 case InventoryReport.Valuation:return "InventoryValuation";
                 case InventoryReport.StockCard:return "StockCard";
                 case InventoryReport.LowStock:return "LowStock";
+                case InventoryReport.ExpiringItems:return "ExpiringItems";
                 default:return "Movement";
             }
         }
@@ -53,7 +54,14 @@ namespace InventorySystem.Forms.Reports
                     try
                     {
                         document.Load(path);
-                        document.SetDataSource(data);
+                        if (report == InventoryReport.ExpiringItems)
+                        {
+                            // This template contains the context table before its item table.
+                            // Bind by name so Crystal does not match incompatible tables by position.
+                            foreach (Table table in document.Database.Tables)
+                                table.SetDataSource(data.Tables[table.Name]);
+                        }
+                        else document.SetDataSource(data);
                         viewer.ReportSource=document;
                         form.Controls.Add(viewer);
                         form.ShowDialog(owner);
@@ -68,7 +76,7 @@ namespace InventorySystem.Forms.Reports
                 MessageBox.Show("The Crystal report could not open. This application requires the SAP 64-bit runtime.\n\n"+detail,"Crystal Reports",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
 #else
-            MessageBox.Show("Crystal Reports is not enabled in this build.\n\nInstall SAP Crystal Reports for Visual Studio, add the four .rpt templates, then build with EnableCrystalReports=true.\n\nThe project includes matching XSD data definitions and setup instructions in Reports/CrystalReports-Setup.md.","Crystal Reports setup required",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            MessageBox.Show("Crystal Reports is not enabled in this build.\n\nInstall SAP Crystal Reports for Visual Studio and build with EnableCrystalReports=true.\n\nThe project includes report templates, matching XSD data definitions and setup instructions in Reports/CrystalReports-Setup.md.","Crystal Reports setup required",MessageBoxButtons.OK,MessageBoxIcon.Information);
 #endif
         }
     }

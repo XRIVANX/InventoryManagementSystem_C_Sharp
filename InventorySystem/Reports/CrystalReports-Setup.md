@@ -1,12 +1,14 @@
 # SAP Crystal Reports
 
-Crystal Reports is enabled by default. Four genuine SAP templates are included: InventoryValuation.rpt, StockCard.rpt, LowStock.rpt, and Movement.rpt. Each uses the matching XSD schema and receives filtered data from the application; no database credentials or business records are saved in the templates.
+Crystal Reports is enabled by default. Five genuine SAP templates are included: InventoryValuation.rpt, StockCard.rpt, LowStock.rpt, Movement.rpt, and ExpiringItems.rpt. Each uses the matching XSD schema and receives filtered data from the application; no database credentials or business records are saved in the templates.
 
 ## Use the reports
 
 Run the Debug / Any CPU configuration on this computer. Open Reports from the top menu, choose a report and its filters, select Generate report, then Crystal preview. The SAP viewer supports export and printing. Changed filters require generating the report again.
 
 ## Runtime and builds
+
+Insights → Expiring Items → Print opens the Crystal viewer with the displayed rows and their applied expiration, warehouse, and product filters. The ExpiringItems report includes batches, expiry dates, days remaining, quantities, average costs, and total at-risk value. Use the viewer toolbar to print or export. An empty result disables Print.
 
 This computer has SAP's 64-bit runtime installed. Every Crystal-enabled build explicitly targets x64 with Prefer32Bit=false, including legacy configurations labeled x86. Prefer Debug / Any CPU in Visual Studio. Stop any existing debugging session before rebuilding so the older executable can be replaced.
 

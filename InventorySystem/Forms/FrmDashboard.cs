@@ -196,5 +196,7 @@ namespace InventorySystem.Forms
 
         // ---- Help menu ----
         private void mnuAbout_Click(object sender, EventArgs e) => OpenChild<FrmAbout>();
+
+        private void mnuVideo_Click(object sender, EventArgs e) => OpenChild<FrmVideo>();
     }
 }

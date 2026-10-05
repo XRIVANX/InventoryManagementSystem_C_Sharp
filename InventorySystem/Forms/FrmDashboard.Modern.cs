@@ -152,7 +152,7 @@ namespace InventorySystem.Forms
                 else
                 {
                     if (overviewWindow.Visible) overviewWindow.Hide();
-                    SelectNavigation(active is FrmAbout ? mnuHelp : null);
+                    SelectNavigation(active is FrmAbout || active is FrmVideo ? mnuHelp : null);
                     foreach (var entry in navigation)
                         if (string.Equals(entry.Key.Text, active.Text, StringComparison.OrdinalIgnoreCase)) SelectNavigation(entry.Value);
                 }

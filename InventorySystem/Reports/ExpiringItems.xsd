@@ -1,0 +1,33 @@
+<?xml version="1.0" standalone="yes"?>
+<xs:schema id="InventoryReports" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="InventoryReports" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ExpiringItems">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Warehouse" type="xs:string" minOccurs="0" />
+              <xs:element name="SKU" type="xs:string" minOccurs="0" />
+              <xs:element name="Product" type="xs:string" minOccurs="0" />
+              <xs:element name="Batch_x0020_No" type="xs:string" minOccurs="0" />
+              <xs:element name="Expiry_x0020_Date" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Days_x0020_Remaining" type="xs:int" minOccurs="0" />
+              <xs:element name="Qty_x0020_On_x0020_Hand" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Avg_x0020_Cost" type="xs:decimal" minOccurs="0" />
+              <xs:element name="At-Risk_x0020_Value" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ReportContext">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Title" type="xs:string" minOccurs="0" />
+              <xs:element name="Filters" type="xs:string" minOccurs="0" />
+              <xs:element name="GeneratedAt" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

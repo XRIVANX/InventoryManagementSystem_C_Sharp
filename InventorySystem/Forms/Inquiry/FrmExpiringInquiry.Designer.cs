@@ -39,6 +39,7 @@
             this.cboProduct = new System.Windows.Forms.ComboBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
+            this.btnPrint = new System.Windows.Forms.Button();
             this.lblTotalRecords = new System.Windows.Forms.Label();
             this.lblTotalQty = new System.Windows.Forms.Label();
             this.lblTotalValue = new System.Windows.Forms.Label();
@@ -50,6 +51,7 @@
             // pnlFilters
             // 
             this.pnlFilters.Controls.Add(this.btnReset);
+            this.pnlFilters.Controls.Add(this.btnPrint);
             this.pnlFilters.Controls.Add(this.btnSearch);
             this.pnlFilters.Controls.Add(this.cboProduct);
             this.pnlFilters.Controls.Add(this.label3);
@@ -155,6 +157,15 @@
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // btnPrint
+            this.btnPrint.Enabled = false;
+            this.btnPrint.Location = new System.Drawing.Point(464, 70);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(75, 33);
+            this.btnPrint.TabIndex = 8;
+            this.btnPrint.Text = "Print";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // lblTotalRecords
             // 
@@ -213,6 +224,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cboThreshold;
         private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.ComboBox cboProduct;
         private System.Windows.Forms.Label label3;

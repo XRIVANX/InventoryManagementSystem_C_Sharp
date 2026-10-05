@@ -4,7 +4,7 @@ using InventorySystem.Data;
 
 namespace InventorySystem.Services
 {
-    public enum InventoryReport { Valuation, StockCard, LowStock, Movement }
+    public enum InventoryReport { Valuation, StockCard, LowStock, Movement, ExpiringItems }
 
     public static class ReportService
     {

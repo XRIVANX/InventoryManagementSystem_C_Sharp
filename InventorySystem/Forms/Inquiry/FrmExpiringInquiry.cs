@@ -1,5 +1,7 @@
 using InventorySystem.Data;
 using InventorySystem.Helpers;
+using InventorySystem.Forms.Reports;
+using InventorySystem.Services;
 using System;
 using System.Data;
 using System.Drawing;
@@ -10,9 +12,13 @@ namespace InventorySystem.Forms.Inquiry
 {
     public partial class FrmExpiringInquiry : Form
     {
+        private string _resultFilters;
         public FrmExpiringInquiry()
         {
             InitializeComponent();
+            dgvExpiring.ReadOnly = true;
+            dgvExpiring.AllowUserToAddRows = false;
+            dgvExpiring.AllowUserToDeleteRows = false;
             InventorySystem.Helpers.ModernTheme.Apply(this);
             this.Text = "Expiring Items Inquiry";
         }
@@ -119,9 +125,12 @@ namespace InventorySystem.Forms.Inquiry
                 dgvExpiring.DataSource = dt;
                 FormatGrid();
                 CalculateSummary(dt);
+                _resultFilters = cboThreshold.Text + " | " + cboWarehouse.Text + " | " + cboProduct.Text;
+                btnPrint.Enabled = dt.Rows.Count > 0;
             }
             catch (Exception ex)
             {
+                btnPrint.Enabled = false;
                 ErrorHandler.Handle(ex, "Fetch expiring stock balance");
             }
         }
@@ -170,6 +179,18 @@ namespace InventorySystem.Forms.Inquiry
             lblTotalRecords.Text = $"Records: {dt.Rows.Count}";
             lblTotalQty.Text = $"Total Qty Expiring: {totalQty:N2}";
             lblTotalValue.Text = $"Total At-Risk Value: ₱{totalVal:N2}";
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            if (!btnPrint.Enabled || !(dgvExpiring.DataSource is DataTable data)) return;
+            try
+            {
+                // Use the displayed rows and sort order with the filters used for this result.
+                CrystalReportWindow.Show(this, InventoryReport.ExpiringItems,
+                    data.DefaultView.ToTable(), "Expiring Items", _resultFilters);
+            }
+            catch (Exception ex) { ErrorHandler.Handle(ex, "Print expiring items"); }
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
